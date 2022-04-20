@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
+          <h4 class="text-white">{{concierto.titulo == '' ? 'Título' : concierto.titulo}}</h4>
+        </div>
+        <img [src]="concierto.imagen == '' ? 'assets/img/noimagen.png' : concierto.imagen" class="card-img-top"
+          alt="orquesta">
+        <div class="card-body">
+          <p>El {{ concierto.fecha | date: 'yyyy-MM-dd' }}</p>
+          <p class="resumen">{{concierto.descripcion == '' ? 'Descripción del concierto' : concierto.descripcion}}</p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>

@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.main {
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-family: 'Lobster', cursive;
+  overflow: hidden;
+
+  h1 {
+    font-size: 9vw;
+    text-shadow: 1px 1px 1px #919191,
+    1px 2px 1px #919191,
+    1px 3px 1px #919191,
+    1px 4px 1px #919191,
+    1px 5px 1px #919191,
+    1px 6px 1px #919191,
+    1px 7px 1px #919191,
+    1px 8px 1px #919191,
+    1px 9px 1px #919191,
+    1px 10px 1px #919191,
+  }
+  h2 {
+    font-size: 2.5vw;
+    text-shadow: 1px 1px 1px #919191,
+    1px 2px 1px #919191,
+    1px 3px 1px #919191,
+    1px 4px 1px #919191,
+    1px 5px 1px #919191,
+    1px 6px 1px #919191,
+    1px 7px 1px #919191,
+  }
+  h3 {
+    font-size: 1vw;
+  }
+
+  .visuals {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .titulo {
+      position: absolute;
+      z-index: 10;
+      margin-top: 10vh;
+      width: 100%;
+      text-align: center;
+
+    }
+
+    .subtitulo {
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      text-align: center;
+      margin-top: 40vh;
+
+    }
+
+    .piano {
+      margin-left: -15%;
+    }
+
+    .hover {
+      margin-left: 15%;
+    }
+
+    .imgUno img {
+      margin-left: -105vw;
+      width: 310vw;
+    }
+
+    .mrg {
+      margin-top: -50vh;
+    }
+
+    .img-home-static {
+      max-width: -webkit-fill-available;
+    }
+
+  }
+
+  .image-container {
+    max-width: 100%;
+  }
+
+  //Imagen 2
+  .conciertos{
+    position: absolute;
+    left: -500px;
+    opacity: 0;
+  }
+  .sub-conciertos {
+    width: 25vw;
+    position: absolute;
+    left: -500px;
+    opacity: 0;
+  }
+  .btn-consultar{
+    position: absolute;
+    left: 300px;
+    margin-top: 450px;
+    opacity: 0;
+  }
+
+  //Imagen 3
+
+  .espacio {
+    width: 25vw;
+    position: absolute;
+    left: 100vw;
+    opacity: 0;
+  }
+  .sub-espacio {
+    position: absolute;
+    width: 20vw;
+    left: 100vw;
+    margin-top: 26vh;
+    opacity: 0;
+  }
+
+  //Imagen 4
+
+  .imgCuatro {
+    .imgcuatroTxt {
+      opacity: 0;
+    }
+    .div-nosotros {
+      position: absolute;
+      width: 32vw;
+      left: 15vw;
+      margin-top: 10vh;
+    }
+    .div-pianistas {
+      position: absolute;
+      width: 32vw;
+      right: 15vw;
+      margin-top: 10vh;
+    }
+    h3 {
+      padding: 1vw;
+      text-shadow: 1px 1px 1px #000000,
+      1px 2px 1px #000000,
+      1px 3px 1px #000000,
+      1px 4px 1px #000000,
+    }
+  }
+}
+//Media Queries
+
+@media only screen and (max-width: 1500px) {
+  .main {
+    .visuals {
+      .subtitulo {
+        margin-top: 30vh;
+      }
+    }
+
+    .imgCuatro {
+      .div-nosotros {
+        margin-top: 2vh;
+      }
+      .div-pianistas {
+        margin-top: 2vh;
+      }
+    }
+
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .main {
+    .visuals {
+      .subtitulo {
+        margin-top: 25vh;
+      }
+    }
+
+    //Imagen 2
+
+    .conciertos{
+      position: absolute;
+      left: 6vw;
+      margin-top: 17vh;
+      opacity: 1;
+    }
+    .sub-conciertos {
+      left: 7vw;
+      margin-top: 25vh;
+      opacity: 1;
+    }
+    .btn-consultar{
+      left: 20vw;
+      margin-top: 43vh;
+      opacity: 1;
+    }
+
+    //Imagen 3
+
+    .espacio {
+      left: 65vw;
+      margin-top: 15vh;
+      opacity: 1;
+    }
+    .sub-espacio {
+      width: 29vw;
+      left: 66vw;
+      margin-top: 25vh;
+      opacity: 1;
+      overflow: auto;
+      max-height: 250px;
+    }
+
+    //Imagen 4
+
+    .imgCuatro {
+      .imgcuatroTxt {
+        opacity: 1;
+      }
+      .div-nosotros {
+        width: 45vw;
+        left: 1vw;
+        margin-top: 5vh;
+        overflow: auto;
+        max-height: 250px;
+      }
+      .div-pianistas {
+        width: 45vw;
+        right: 0vw;
+        margin-top: 5vh;
+        overflow: auto;
+        max-height: 250px;
+      }
+    }
+
+  }
+
+  @media only screen and (max-width: 754px) {
+    .main {
+      h1 {
+        text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 6px 1px #919191,
+      }
+      h2 {
+        text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+      }
+      .visuals {
+        .titulo {
+          margin-top: 5vh;
+
+        }
+        .subtitulo {
+          margin-top: 20vh;
+        }
+      }
+          //Imagen 2
+
+    .conciertos{
+      margin-top: 12vh;
+    }
+    .sub-conciertos {
+      margin-top: 16vh;
+    }
+    .btn-consultar{
+      margin-top: 24vh;
+    }
+
+    //Imagen 3
+
+    .espacio {
+      margin-top: 12vh;
+    }
+    .sub-espacio {
+      margin-top: 19vh;
+    }
+
+    //Imagen 4
+
+      .imgCuatro {
+        .div-nosotros {
+          margin-top: 2vh;
+        }
+        .div-pianistas {
+          margin-top: 2vh;
+        }
+      }
+
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+
+    .main {
+      .visuals {
+        .titulo {
+          margin-top: 5vh;
+
+        }
+        .subtitulo {
+          margin-top: 15vh;
+        }
+
+        .btn-consultar{
+          margin-top: 20vh;
+        }
+
+      }
+    }
+  }
+
+
+}
