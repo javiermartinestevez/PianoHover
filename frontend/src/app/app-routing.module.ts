@@ -4,6 +4,8 @@ import { ConciertosComponent } from './components/conciertos/conciertos.componen
 import { HomeComponent } from './components/home/home.component';
 import { ConciertosFormComponent } from './components/conciertos-form/conciertos-form.component';
 import { ConciertoComponent } from './components/conciertos/concierto/concierto.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
 
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: "conciertos/add", component: ConciertosFormComponent },
   { path: "conciertos/edit/:id", component: ConciertosFormComponent },
   { path: "concierto/:id", component: ConciertoComponent },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
   { path: "**", component: HomeComponent, pathMatch: "full" },
 
 ];

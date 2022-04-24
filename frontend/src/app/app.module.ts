@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConciertosFormComponent } from './components/conciertos-form/conciertos-form.component';
 import { FormsModule } from '@angular/forms';
 import { ConciertoComponent } from './components/conciertos/concierto/concierto.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ConciertoComponent } from './components/conciertos/concierto/concierto.
     HomeComponent,
     ConciertosComponent,
     ConciertosFormComponent,
-    ConciertoComponent
+    ConciertoComponent,
+    LoginComponent,
+    RegisterComponent
 
   ],
   imports: [

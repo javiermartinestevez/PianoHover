@@ -1,8 +1,6 @@
 import { Request, Response, Router } from 'express';
 import db from '../database';
 
-import bd from '../database';
-
 class ConciertosController {
 
     public router: Router = Router();
@@ -23,7 +21,7 @@ class ConciertosController {
 
     public async crearConcierto(req: Request, res: Response): Promise<void> {
         await db.query('INSERT INTO conciertos set ?', [req.body]);
-        res.json({text: "Creanr concierto"})
+        res.json({text: "Creando concierto"})
     }
 
     public async eliminarConcierto(req: Request, res: Response): Promise<void> {

@@ -38,7 +38,7 @@ class ConciertosController {
     crearConcierto(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             yield database_1.default.query('INSERT INTO conciertos set ?', [req.body]);
-            res.json({ text: "Creanr concierto" });
+            res.json({ text: "Creando concierto" });
         });
     }
     eliminarConcierto(req, res) {

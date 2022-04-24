@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card ">
+        <div class="card-header bg-dark d-flex">
+          <h4 class="text-white">Inicio de Sesión</h4>
+        </div>
+
+        <div class="card-body">
+
+          <form novalidate #f="ngForm">
+
+            <div class="mb-3">
+              <label class="form-label">Nombre completo:*</label>
+              <input type="text" [(ngModel)]="usuario.nombre" class="form-control" name="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nombre de usuario:*</label>
+              <input type="text" [(ngModel)]="usuario.usuario" class="form-control" name="usuario" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Correo electrónico:*</label>
+              <input type="email" [(ngModel)]="usuario.email" class="form-control" name="email" email required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Contraseña:*</label>
+              <input type="password" [(ngModel)]="usuario.password" class="form-control" name="password" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Repite la contraseña:*</label>
+              <input type="password" [(ngModel)]="passwordAuth" class="form-control" name="passwordAuth" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="terminos" name="terminos" required>
+              <label class="form-check-label">Aceptar <a routerLink="terminos">terminos y servicios</a>.*</label>
+            </div>
+            <div class="text-center">
+              <button (click)="registrar()" *ngIf="!f.invalid && terminos" class="btn btn-info">
+                <i class="fa-solid fa-user"></i>
+                Registrarse
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
