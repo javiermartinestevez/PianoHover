@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ConciertoComponent } from './components/conciertos/concierto/concierto.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { EntradasComponent } from './components/conciertos/concierto/entradas/entradas.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
     ConciertosFormComponent,
     ConciertoComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EntradasComponent
 
   ],
   imports: [

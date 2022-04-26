@@ -20,8 +20,7 @@ export class ConciertoComponent implements OnInit {
     fecha_crt: new Date()
   };
 
-  estado: string = '';
-  estadoActive: boolean = true;
+
 
   constructor(private conciertosService: ConciertosService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -39,9 +38,6 @@ export class ConciertoComponent implements OnInit {
   }
 
 
-  cambiarEstado(e: any) {
-    this.estado = (this.estadoActive) ? "active" : "";
-    this.estadoActive = !this.estadoActive;
-  }
+
 
 }
