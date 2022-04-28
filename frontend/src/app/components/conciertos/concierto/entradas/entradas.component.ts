@@ -90,11 +90,6 @@ export class EntradasComponent implements OnInit {
       }
     }
     this.contador = 0;
-    this.mostrar();
-  }
-
-  mostrar() {
-    console.log("asientos:",this.asientosSeleccionados)
   }
 
 
