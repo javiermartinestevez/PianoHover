@@ -45,6 +45,8 @@ export class ConciertosFormComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+
+          console.log("JSON??", JSON.stringify(res));
           this.router.navigate(['/conciertos']);
         },
         err => console.log(err)

@@ -3,7 +3,7 @@
     <div class="col-md-4 pb-5" *ngFor="let concierto of conciertos">
       <div class="card text-center">
         <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
-          <a routerLink="/concierto/{{ concierto.id }}"><h4 class="text-white">{{ concierto.titulo }}</h4></a>
+          <a routerLink="/concierto/{{ concierto.id }}/"><h4 class="text-white">{{ concierto.titulo }}</h4></a>
         </div>
         <img routerLink="/concierto/{{ concierto.id }}" [src]="concierto.imagen == '' ? 'assets/img/noimagen.png' : concierto.imagen" class="card-img-top" alt="orquesta">
         <div class="card-body">

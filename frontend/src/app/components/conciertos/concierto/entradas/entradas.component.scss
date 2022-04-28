@@ -57,6 +57,7 @@
   }
   .sold {
     background: rgba(0, 0, 0, 0.785);
+    cursor: default;
   }
 
   .row-2 {
@@ -134,6 +135,7 @@
   }
   .sold {
     background: rgba(0, 0, 0, 0.785);
+    cursor: default;
   }
 
   .row-2 {
@@ -183,4 +185,7 @@
       transform: skew(-20deg);
     }
   }
+}
+.asientosSeleccionados {
+  color: #ffffff;
 }

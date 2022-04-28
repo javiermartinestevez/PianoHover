@@ -5,6 +5,7 @@ import cors from "cors";
 import indexRoutes from "./routes/indexRoutes";
 import  conciertosRoutes from "./routes/conciertosRoutes";
 import usuariosRoutes from "./routes/usuariosRoutes";
+import asientosRoutes from "./routes/asientosRoutes";
 
 class Server {
 
@@ -28,6 +29,7 @@ class Server {
         this.app.use('/', indexRoutes);
         this.app.use('/api/conciertos', conciertosRoutes);
         this.app.use('/api/usuarios', usuariosRoutes);
+        this.app.use('/api/asientos', asientosRoutes);
     }
 
     start(): void {
