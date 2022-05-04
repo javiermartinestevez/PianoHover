@@ -727,5 +727,19 @@
 </div>
 
 <div class="asientosSeleccionados">
-  <h3>{{asientosSeleccionados}}</h3>
+  <h3 *ngFor="let seleccion of asientosSeleccionados">
+    <i class="fa-solid fa-ticket"></i>
+    Butaca: {{seleccion.fila}}{{seleccion.letra}} -
+    {{seleccion.fila === 1 || seleccion.fila === 2 ? precioVIP+"€" : precioNormal+"€"}}
+  </h3>
+</div>
+<div class="comprar">
+  <a (click)="comprar()" class="btn btn-success btn-block">
+    <i class="fa-solid fa-ticket"></i>
+    COMPRAR
+  </a>
+  <h3>TOTAL: {{total.toFixed(2)}}€</h3>
+</div>
+<div class="paypal" *ngIf="pagar">
+  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
 </div>

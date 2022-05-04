@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EntradasComponent } from './components/conciertos/concierto/entradas/entradas.component';
 
+//Paypal
+
+import { NgxPayPalModule } from 'ngx-paypal';
+import { CompradoComponent } from './components/conciertos/concierto/entradas/comprado/comprado.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +30,8 @@ import { EntradasComponent } from './components/conciertos/concierto/entradas/en
     ConciertoComponent,
     LoginComponent,
     RegisterComponent,
-    EntradasComponent
+    EntradasComponent,
+    CompradoComponent
 
   ],
   imports: [
@@ -32,10 +39,12 @@ import { EntradasComponent } from './components/conciertos/concierto/entradas/en
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxPayPalModule,
+    NgbModule,
   ],
   providers: [
     ConciertosService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

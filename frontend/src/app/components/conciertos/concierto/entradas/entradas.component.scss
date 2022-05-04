@@ -1,6 +1,7 @@
 .theatre {
   display: flex;
   margin-left: 1vw;
+  margin-top: 3vw;
 }
 
 .cinema-seats {
@@ -188,4 +189,21 @@
 }
 .asientosSeleccionados {
   color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  h3 {
+    border-bottom: double;
+  }
+}
+.comprar {
+  color: #ffffff;
+  text-align: right;
+  margin: 2vh;
+}
+.paypal {
+  max-width: fit-content;
+  float: right;
+  margin: 1vh 0 1vh 0;
 }

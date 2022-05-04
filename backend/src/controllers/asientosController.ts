@@ -13,6 +13,10 @@ class AsientosController {
         res.json(asientos);
     }
 
+    public async crearAsiento(req: Request, res: Response): Promise<void> {
+        await db.query('INSERT INTO asientos set ?', [req.body]);
+        res.json({text: "Creando asientos"})
+    }
 
 /*     public async asientos (req: Request, res: Response): Promise<any> {
         const { id } = req.body;
@@ -23,10 +27,6 @@ class AsientosController {
         res.status(404).json(usuario[0]);
     } */
 
-/*     public async crearAsiento(req: Request, res: Response): Promise<void> {
-        await db.query('INSERT INTO asientos set ?', [req.body]);
-        res.json({text: "Creando asientos"})
-    } */
 
     /* public async eliminarAsiento(req: Request, res: Response): Promise<void> {
         const { id } = req.params;

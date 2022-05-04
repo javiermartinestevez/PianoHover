@@ -9,8 +9,8 @@ class AsientosRoutes {
     }
     config() {
         this.router.get('/:id', asientosController_1.asientosController.listaAsientos);
+        this.router.post('/', asientosController_1.asientosController.crearAsiento);
         /*       this.router.post('/login/:user', usuariosController.loginUsuario);
-              this.router.post('/', usuariosController.crearUsuario);
       
               this.router.get('/:id', usuariosController.usuario);
               this.router.delete('/:id', usuariosController.eliminarUsuario);

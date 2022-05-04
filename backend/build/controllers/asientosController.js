@@ -28,10 +28,6 @@ class AsientosController {
                 }
                 res.status(404).json(usuario[0]);
             } */
-        /*     public async crearAsiento(req: Request, res: Response): Promise<void> {
-                await db.query('INSERT INTO asientos set ?', [req.body]);
-                res.json({text: "Creando asientos"})
-            } */
         /* public async eliminarAsiento(req: Request, res: Response): Promise<void> {
             const { id } = req.params;
             await db.query('DELETE FROM asientos WHERE fila = ?', [id]);
@@ -48,6 +44,12 @@ class AsientosController {
             const { id } = req.params;
             const asientos = yield database_1.default.query("SELECT * FROM asientos WHERE idConcierto = ?", [id]);
             res.json(asientos);
+        });
+    }
+    crearAsiento(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('INSERT INTO asientos set ?', [req.body]);
+            res.json({ text: "Creando asientos" });
         });
     }
 }

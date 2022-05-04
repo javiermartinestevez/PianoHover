@@ -1,5 +1,7 @@
 .row {
   background-color: #2e2c2c;
+  margin-bottom: 5vh;
+  border-radius: 7px;
 }
 .escenario {
   text-align: center;
@@ -15,7 +17,5 @@
   h4 {
     border-top: ridge;
   }
-  .comprar {
-    text-align: right;
-  }
+
 }
