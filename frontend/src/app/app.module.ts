@@ -20,6 +20,10 @@ import { EntradasComponent } from './components/conciertos/concierto/entradas/en
 import { NgxPayPalModule } from 'ngx-paypal';
 import { CompradoComponent } from './components/conciertos/concierto/entradas/comprado/comprado.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TerminosComponent } from './components/terminos/terminos.component';
+import { PrivacidadComponent } from './components/terminos/privacidad/privacidad.component';
+import { LegalComponent } from './components/terminos/legal/legal.component';
+import { CondicionesComponent } from './components/terminos/condiciones/condiciones.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     RegisterComponent,
     EntradasComponent,
-    CompradoComponent
+    CompradoComponent,
+    TerminosComponent,
+    PrivacidadComponent,
+    LegalComponent,
+    CondicionesComponent
 
   ],
   imports: [

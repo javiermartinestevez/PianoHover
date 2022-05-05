@@ -740,6 +740,6 @@
   </a>
   <h3>TOTAL: {{total.toFixed(2)}}€</h3>
 </div>
-<div class="paypal" *ngIf="pagar">
+<div class="paypal" *ngIf="pagar && asientosSeleccionados.length > 0">
   <ngx-paypal [config]="payPalConfig"></ngx-paypal>
 </div>

@@ -9,10 +9,12 @@
 
 <div class="modal-body">
   <h3>Datos de la compra</h3>
+  <h3>{{nombre}}</h3>
+  <p><b>Para el: </b>{{fecha | date: 'yyyy-MM-dd' }}</p>
   <hr>
   <div *ngFor="let item of items">
      <p><b>Entrada para la butaca:</b></p>
-     <h4>{{item.fila}}{{item.letra}}</h4>
+     <h4><i class="fa-solid fa-ticket"></i> {{item.fila}}{{item.letra}}</h4>
      <p>{{item.fila === 1 || item.fila === 2 ? precioVIP+"€" : precioNormal+"€"}}</p>
 
   </div>

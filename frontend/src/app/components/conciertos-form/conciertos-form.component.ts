@@ -16,6 +16,8 @@ export class ConciertosFormComponent implements OnInit {
     descripcion: '',
     fecha: new Date(),
     imagen: '',
+    precioNormal: null,
+    precioVIP: null,
     asientos: 0,
     fecha_crt: new Date()
   };
@@ -40,6 +42,7 @@ export class ConciertosFormComponent implements OnInit {
 
   guardarConcierto() {
     delete this.concierto.id;
+    delete this.concierto.asientos;
     delete this.concierto.fecha_crt;
     this.conciertosService.agregarConcierto(this.concierto)
       .subscribe(

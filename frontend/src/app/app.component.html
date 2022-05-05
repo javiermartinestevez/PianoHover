@@ -1,17 +1,149 @@
-<header class="header">
-  <nav class="navbar">
-    <a routerLink="/">Inicio</a>
-    <a routerLink="/conciertos">Conciertos</a>
-    <a routerLink="/conciertos/add">Añadir concierto</a>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Registrar</a>
-  </nav>
+<header class="navbar p-3 bg-dark text-white">
+  <div class="container-fluid d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <a class="nav-link px-5 text-white navbar-brand" href="/">
+      <img class="logo-main" alt="logo" src="../assets/img/logo/logo.png"/>
+      PianoHover</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/conciertos" class="nav-link px-2 text-white">CONCIERTOS</a></li>
+      <li><a routerLink="/conciertos/add" class="nav-link px-2 text-white">AÑADIR CONCIERTOS</a></li>
+      <li><a class="nav-link px-2 text-white">PERFIL</a></li>
+    </ul>
+
+    <div class="text-end">
+      <a routerLink="/login" class="btn btn-outline-light me-2">
+        <i class="fa-solid fa-user"></i>
+        Iniciar Sesión
+      </a>
+      <a routerLink="/register" class="btn btn-warning">
+        <i class="fa-solid fa-circle-plus"></i>
+        Registrarse
+      </a>
+      <a routerLink="/" class="btn btn-danger m-2">
+        <i class="fa-solid fa-lock-open"></i>
+        Administrador
+      </a>
+    </div>
+  </div>
 </header>
 
 <router-outlet></router-outlet>
 
-<footer class="footer">
-<div>Contacto</div>
-<div>Copy ®</div>
-<div class="rrss">REDES SOCIALES</div>
+<footer class="footer-section">
+  <div class="container container-footer">
+    <div class="footer-cta pt-5 pb-5">
+      <div class="row">
+        <div class="col-xl-4 col-md-4 mb-30">
+          <div class="single-cta">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="cta-text">
+              <h4>Encuentranos</h4>
+              <span> C. Albondón, 12, 18003 Granada</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-4 mb-30">
+          <div class="single-cta">
+            <i class="fas fa-phone"></i>
+            <div class="cta-text">
+              <h4>Llamanos</h4>
+              <span>958 89 32 30</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-4 mb-30">
+          <div class="single-cta">
+            <i class="far fa-envelope-open"></i>
+            <div class="cta-text">
+              <h4>Email</h4>
+              <span>@javime_100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-content pt-5 pb-5">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 mb-50">
+          <div class="footer-widget">
+            <div class="footer-logo">
+              <a routerLink="/"><img src="../assets/img/logo/logoPianoBot.png" class="img-fluid" alt="logo"></a>
+            </div>
+            <div class="footer-text">
+              <p>La música da alma al universo , alas a la mente, consuelo a la tristeza,
+                vida y alegria a todas las cosas. En PianoHover somos Música.</p>
+            </div>
+            <div class="footer-social-icon">
+              <span>siguenos</span>
+              <a href="https://www.facebook.com/Javi.Martin.Estevez" target="_blank"><i class="fab fa-facebook-f facebook-bg"></i></a>
+              <a href="https://twitter.com/javiatl" target="_blank"><i class="fab fa-twitter twitter-bg"></i></a>
+              <a href="https://www.instagram.com/javime_100/" target="_blank"><i class="fa-brands fa-instagram google-bg"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+          <div class="footer-widget">
+            <div class="footer-widget-heading">
+              <h3>Enlaces útiles</h3>
+            </div>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">about</a></li>
+              <li><a href="#">services</a></li>
+              <li><a href="#">portfolio</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">Expert Team</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Latest News</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+          <div class="footer-widget">
+            <div class="footer-widget-heading">
+              <h3>Subscribete</h3>
+            </div>
+            <div class="footer-text mb-25">
+              <p>Subscribete para recibir todas las novedades, noticias y proximos eventos.</p>
+            </div>
+            <div class="subscribe-form">
+              <form action="#">
+                <input type="text" placeholder="Email">
+                <button><i class="fab fa-telegram-plane"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright-area">
+    <div class="">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+          <div class="copyright-text">
+            <p>Copyright &copy; 2022, Todos los derechos reservados <a href="https://copyright.es/" target="_blank">Info</a></p>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+          <div class="footer-menu">
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a (click)="abrirTerminos()">Terminos</a></li>
+              <li><a (click)="abrirLegal()">Aviso Legal</a></li>
+              <li><a (click)="abrirPrivacidad()">Privacidad</a></li>
+              <li><a (click)="abrirCondiciones()">Condiciones</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>

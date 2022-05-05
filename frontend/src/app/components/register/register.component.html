@@ -32,7 +32,7 @@
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" [(ngModel)]="terminos" name="terminos" required>
-              <label class="form-check-label">Aceptar <a routerLink="terminos">terminos y servicios</a>.*</label>
+              <label class="form-check-label">Aceptar <a class="a" (click)="abrirTerminos()">terminos y servicios</a>.*</label>
             </div>
             <div class="text-center">
               <button (click)="registrar()" *ngIf="!f.invalid && terminos" class="btn btn-info">

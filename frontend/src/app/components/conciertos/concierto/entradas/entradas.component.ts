@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { AsientosService } from 'src/app/services/asientos.service';
 import { Asiento } from 'src/models/Asiento';
+import { Concierto } from 'src/models/Concierto';
 import { CompradoComponent } from './comprado/comprado.component';
 
 
@@ -14,7 +15,11 @@ import { CompradoComponent } from './comprado/comprado.component';
 })
 export class EntradasComponent implements OnInit {
 
-  @Output() butacas = new EventEmitter<any>();
+  @Input() concierto: any;
+
+  precioNormal: number = 0;
+  precioVIP: number = 0;
+
 
   public payPalConfig?: IPayPalConfig;
 
@@ -41,8 +46,6 @@ export class EntradasComponent implements OnInit {
   }
 
   total: number = 0;
-  precioNormal: number = 49.99;
-  precioVIP: number = 79.99;
 
   constructor(private asientosService: AsientosService,
     private activatedRoute: ActivatedRoute,
@@ -53,7 +56,9 @@ export class EntradasComponent implements OnInit {
   ngOnInit(): void {
     this.listarAsientos();
     this.initConfig();
+
   }
+
 
   private initConfig(): void { //Lógica de pago de PayPal
     this.payPalConfig = {
@@ -97,7 +102,9 @@ export class EntradasComponent implements OnInit {
           this.asientosSeleccionados,
           data.purchase_units[0].amount.value,
           this.precioVIP,
-          this.precioNormal
+          this.precioNormal,
+          this.concierto.titulo,
+          this.concierto.fecha
         );
       },
       onCancel: (data, actions) => {
@@ -127,10 +134,6 @@ export class EntradasComponent implements OnInit {
     return items;
   }
 
-
-  enviarDatos(value: any) {
-    this.butacas.emit(value);
-  }
 
   listarAsientos(): void {//recibe todos los asientos del conciento
     const params = this.activatedRoute.snapshot.params;
@@ -165,6 +168,10 @@ export class EntradasComponent implements OnInit {
 
   contadorSeleccion: number = 0;
   seleccionarAsiento(fila: number, letra: string) { //selecciona asientos para comprar
+
+    this.precioVIP = this.concierto.precioVip; //se fijan los precios desde el concierto
+    this.precioNormal = this.concierto.precioNormal;
+
     let agregar: boolean = true;
 
     let sitio = { fila: fila, letra: letra };
@@ -212,7 +219,7 @@ export class EntradasComponent implements OnInit {
     this.contadorSeleccion = 0;
   }
 
-  crearAsiento() {
+  crearAsiento() {//Añadir asientos comprados a la base de datos
     const params = this.activatedRoute.snapshot.params['id'];
     delete this.asiento.id;
 
@@ -235,15 +242,20 @@ export class EntradasComponent implements OnInit {
   }
 
   comprar():void {
-    this.pagar = !this.pagar;
+    if(this.asientosSeleccionados.length > 0){
+      this.pagar = !this.pagar;
+    }
   }
 
-  abrirComprado(items: any, total: any, precioVIP: any, precioNormal: any): void {
+  //abre componente en una ventana emergente
+  abrirComprado(items: any, total: any, precioVIP: any, precioNormal: any, nombre: any, fecha: any): void {
     const modalRef = this.compradoService.open(CompradoComponent);
     modalRef.componentInstance.items = items;
     modalRef.componentInstance.total = total;
     modalRef.componentInstance.precioVIP = precioVIP;
     modalRef.componentInstance.precioNormal = precioNormal;
+    modalRef.componentInstance.nombre = nombre;
+    modalRef.componentInstance.fecha = fecha;
   }
 
 }

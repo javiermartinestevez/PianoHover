@@ -12,12 +12,15 @@ export class CompradoComponent implements OnInit {
   @Input() items: any;
   @Input() precioVIP: any;
   @Input() precioNormal: any;
+  @Input() nombre: any;
+  @Input() fecha: any;
 
 
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
+
   reload(): void {
     location.reload();
   }

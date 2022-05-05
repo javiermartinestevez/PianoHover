@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UsersService } from 'src/app/services/users.service';
 import { Usuario } from 'src/models/Usuario';
+import { TerminosComponent } from '../terminos/terminos.component';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +23,7 @@ export class RegisterComponent implements OnInit {
   passwordAuth: string = "";
   terminos: boolean = false;
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private terminosService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -49,5 +51,9 @@ export class RegisterComponent implements OnInit {
     }else {
       console.log("La contraseña debe tener minimo 6 caracteres")
     }
+  }
+
+  abrirTerminos(): void {
+    this.terminosService.open(TerminosComponent);
   }
 }

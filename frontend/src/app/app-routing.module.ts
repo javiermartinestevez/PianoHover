@@ -10,8 +10,6 @@ import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
 
   { path: "", component: HomeComponent, pathMatch: "full" },
-  /* { path: "login", component: LoginComponent, pathMatch: "full" },
-  { path: "register", component: RegisterComponent, pathMatch: "full" }, */
   { path: "conciertos", component: ConciertosComponent },
   { path: "conciertos/add", component: ConciertosFormComponent },
   { path: "conciertos/edit/:id", component: ConciertosFormComponent },
