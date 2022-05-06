@@ -9,7 +9,7 @@ class ConciertosRoutes {
     }
     config() {
         this.router.get('/', usuariosController_1.usuariosController.listaUsuarios);
-        this.router.post('/login/:user', usuariosController_1.usuariosController.loginUsuario);
+        this.router.post('/login', usuariosController_1.usuariosController.loginUsuario);
         this.router.post('/', usuariosController_1.usuariosController.crearUsuario);
         this.router.get('/:id', usuariosController_1.usuariosController.usuario);
         this.router.delete('/:id', usuariosController_1.usuariosController.eliminarUsuario);

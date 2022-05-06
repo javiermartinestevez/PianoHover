@@ -167,7 +167,14 @@ export class EntradasComponent implements OnInit {
   }
 
   contadorSeleccion: number = 0;
-  seleccionarAsiento(fila: number, letra: string) { //selecciona asientos para comprar
+  seleccionarAsiento(fila: number, letra: string, event: any) { //selecciona asientos para comprar
+
+    let seat : HTMLElement = event.path[0] as HTMLElement; //cambia la clase a active para ver el asiento seleccionado
+    if (seat.classList.contains('active')){
+      seat.classList.remove('active');
+    }else {
+      seat.classList.add('active');
+    }
 
     this.precioVIP = this.concierto.precioVip; //se fijan los precios desde el concierto
     this.precioNormal = this.concierto.precioNormal;

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import jwt_decode from "jwt-decode";
+import { LoginErrorComponent } from '../error/login-error/login-error.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -9,30 +12,27 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class LoginComponent implements OnInit {
 
-/*   usuario: any = {
-    id: 0,
-  nombre: "",
-  emial: "",
-  usuario: "",
-  password: "",
-  rol: 1,
-  } */
 
   usuario: any = {
-    usuario: "",
+    username: "",
     password: "",
   }
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router,private errorService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
   login() {
     this.usersService.login(this.usuario)
-      .subscribe(data => {
-        console.log(data)
-      })
+      .subscribe(token => {
+        localStorage.setItem("token", token);
+        this.router.navigate(['/conciertos']);
+      },
+      err => this.errorService.open(LoginErrorComponent)
+      )
   }
 
+ /*  let decoded = jwt_decode(token);
+        console.log(decoded) */
 }

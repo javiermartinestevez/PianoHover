@@ -14,9 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usuariosController = void 0;
 const express_1 = require("express");
-const database_1 = __importDefault(require("../database")); /*
-import { jwt } from 'jsonwebtoken';
-import { bcrypt } from 'bcryptjs' */
+const database_1 = __importDefault(require("../database"));
+const keys_1 = __importDefault(require("../keys"));
 class UsuariosController {
     constructor() {
         this.router = (0, express_1.Router)();
@@ -29,13 +28,22 @@ class UsuariosController {
     }
     loginUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            let dateStamp = Math.floor((new Date).getTime() / 1000);
             const { username, password } = req.body;
             const usuario = yield database_1.default.query("SELECT * FROM usuarios WHERE usuario = ? AND password = ?", [username, password]);
             if (usuario.length > 0) {
-                return res.json(usuario[0]);
+                const sign = require('jwt-encode');
+                const secret = keys_1.default.secret;
+                const data = {
+                    id: usuario[0].id,
+                    iat: dateStamp,
+                    exp: dateStamp + 1800
+                };
+                const jwt = sign(data, secret);
+                res.status(200).json(jwt);
+                return jwt;
             }
             res.status(404).json(usuario[0]);
-            res.json({ text: "Login usuario" });
         });
     }
     usuario(req, res) {

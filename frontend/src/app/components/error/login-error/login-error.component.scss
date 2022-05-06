@@ -1,0 +1,19 @@
+
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bb2d3b;
+  height: 6vh;
+  padding: 1vh;
+  color: #ffff;
+}
+.body {
+  text-align: center;
+}
+.reintentar {
+  text-align: center;
+  margin: 2vh;
+}

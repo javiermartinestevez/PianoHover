@@ -24,6 +24,10 @@ import { TerminosComponent } from './components/terminos/terminos.component';
 import { PrivacidadComponent } from './components/terminos/privacidad/privacidad.component';
 import { LegalComponent } from './components/terminos/legal/legal.component';
 import { CondicionesComponent } from './components/terminos/condiciones/condiciones.component';
+import { AdministradorComponent } from './components/administrador/administrador.component';
+import { LoginErrorComponent } from './components/error/login-error/login-error.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { CondicionesComponent } from './components/terminos/condiciones/condicio
     TerminosComponent,
     PrivacidadComponent,
     LegalComponent,
-    CondicionesComponent
+    CondicionesComponent,
+    AdministradorComponent,
+    LoginErrorComponent,
+    HeaderComponent,
+    FooterComponent
 
   ],
   imports: [

@@ -1,0 +1,37 @@
+<header class="navbar p-3 bg-dark text-white">
+  <div class="container-fluid d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <a class="nav-link px-5 text-white navbar-brand" href="/">
+      <img class="logo-main" alt="logo" src="../assets/img/logo/logo.png"/>
+      PianoHover</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/conciertos" class="nav-link px-2 text-white">CONCIERTOS</a></li>
+      <li><a routerLink="/conciertos/add" class="nav-link px-2 text-white">AÑADIR CONCIERTOS</a></li>
+      <li><a class="nav-link px-2 text-white">PERFIL</a></li>
+    </ul>
+
+    <div class="text-end">
+      <a routerLink="/login" class="btn btn-outline-light me-2">
+        <i class="fa-solid fa-user"></i>
+        Iniciar Sesión
+      </a>
+      <a routerLink="/register" class="btn btn-warning">
+        <i class="fa-solid fa-circle-plus"></i>
+        Registrarse
+      </a>
+      <a (click)="cerrarSesion()" #logout class="btn btn-warning m-2">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        Cerrar Sesión
+      </a>
+      <a routerLink="/administrador" class="btn btn-danger m-2">
+        <i class="fa-solid fa-lock-open"></i>
+        Administrador
+      </a>
+    </div>
+  </div>
+</header>
