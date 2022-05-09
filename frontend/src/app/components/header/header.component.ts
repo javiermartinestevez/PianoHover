@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  usuario: any = {};
 
   constructor(private router: Router) { }
 
@@ -16,6 +19,25 @@ export class HeaderComponent implements OnInit {
   cerrarSesion(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
+  }
+
+  getIdUser(): void {
+    let user = localStorage.getItem('token');
+    this.router.navigate(['/usuario/'+this.decode(user).id]);
+  }
+  decode(token: string | any) {
+    let decodeId = jwt_decode(token);
+    this.usuario = decodeId;
+    return this.usuario;
+  }
+
+  isLoged() {
+    let user = localStorage.getItem('token');
+    if(user){
+      return true;
+    }else {
+      return false;
+    }
   }
 
 }

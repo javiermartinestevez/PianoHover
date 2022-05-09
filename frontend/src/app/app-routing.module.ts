@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { LoginGuard } from './guards/login.guard';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "conciertos/add", component: ConciertosFormComponent },
   { path: "conciertos/edit/:id", component: ConciertosFormComponent },
   { path: "concierto/:id", component: ConciertoComponent },
+  { path: "usuario/:id", component: PerfilComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "administrador", component: AdministradorComponent },

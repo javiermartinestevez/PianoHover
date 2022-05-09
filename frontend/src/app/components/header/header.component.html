@@ -12,19 +12,19 @@
     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
       <li><a routerLink="/conciertos" class="nav-link px-2 text-white">CONCIERTOS</a></li>
       <li><a routerLink="/conciertos/add" class="nav-link px-2 text-white">AÑADIR CONCIERTOS</a></li>
-      <li><a class="nav-link px-2 text-white">PERFIL</a></li>
+      <li *ngIf="isLoged()"><a (click)="getIdUser()" class="nav-link px-2 text-white">PERFIL</a></li>
     </ul>
 
     <div class="text-end">
-      <a routerLink="/login" class="btn btn-outline-light me-2">
+      <a routerLink="/login" *ngIf="!isLoged()"class="btn btn-outline-light me-2">
         <i class="fa-solid fa-user"></i>
         Iniciar Sesión
       </a>
-      <a routerLink="/register" class="btn btn-warning">
+      <a routerLink="/register" *ngIf="!isLoged()" class="btn btn-outline-light">
         <i class="fa-solid fa-circle-plus"></i>
         Registrarse
       </a>
-      <a (click)="cerrarSesion()" #logout class="btn btn-warning m-2">
+      <a (click)="cerrarSesion()" *ngIf="isLoged()" class="btn btn-outline-light m-2">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         Cerrar Sesión
       </a>

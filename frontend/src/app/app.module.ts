@@ -28,6 +28,7 @@ import { AdministradorComponent } from './components/administrador/administrador
 import { LoginErrorComponent } from './components/error/login-error/login-error.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AdministradorComponent,
     LoginErrorComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PerfilComponent
 
   ],
   imports: [

@@ -21,7 +21,7 @@ class UsuariosController {
             const data = {
                 id: usuario[0].id,
                 iat: dateStamp,
-                exp: dateStamp+1800
+                exp: dateStamp+1
             };
             const jwt = sign(data, secret);
             res.status(200).json(jwt);
