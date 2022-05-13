@@ -12,37 +12,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.asientosController = void 0;
+exports.entradasController = void 0;
 const express_1 = require("express");
 const database_1 = __importDefault(require("../database"));
-class AsientosController {
+class EntradasController {
     constructor() {
         this.router = (0, express_1.Router)();
     }
-    listaAsientos(req, res) {
+    listaEntradas(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const asientos = yield database_1.default.query("SELECT * FROM asientos WHERE idConcierto = ?", [id]);
-            res.json(asientos);
+            const entradas = yield database_1.default.query("SELECT * FROM entrada WHERE idUsuario = ?", [id]);
+            res.json(entradas);
         });
     }
-    listaTodosAsientos(req, res) {
+    crearEntrada(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const asientos = yield database_1.default.query("SELECT * FROM asientos");
-            res.json(asientos);
-        });
-    }
-    ultimoAsientos(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const asientos = yield database_1.default.query("SELECT * FROM asientos ORDER BY id DESC LIMIT 1");
-            res.json(asientos);
-        });
-    }
-    crearAsiento(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO asientos set ?', [req.body]);
-            res.json({ text: "Creando asientos" });
+            yield database_1.default.query('INSERT INTO entrada set ?', [req.body]);
+            res.json({ text: "Creando entradas" });
         });
     }
 }
-exports.asientosController = new AsientosController();
+exports.entradasController = new EntradasController();

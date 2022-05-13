@@ -36,8 +36,9 @@ class UsuariosController {
                 const secret = keys_1.default.secret;
                 const data = {
                     id: usuario[0].id,
+                    rol: usuario[0].rol,
                     iat: dateStamp,
-                    exp: dateStamp + 1
+                    exp: dateStamp + 1800
                 };
                 const jwt = sign(data, secret);
                 res.status(200).json(jwt);
@@ -48,8 +49,8 @@ class UsuariosController {
     }
     usuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.body;
-            const usuario = yield database_1.default.query("SELECT * FROM usuarios WHERE usuario = ?", [id]);
+            const { id } = req.params;
+            const usuario = yield database_1.default.query("SELECT * FROM usuarios WHERE id = ?", [id]);
             if (usuario.length > 0) {
                 return res.json(usuario[0]);
             }

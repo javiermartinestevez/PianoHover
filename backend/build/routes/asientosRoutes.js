@@ -9,12 +9,9 @@ class AsientosRoutes {
     }
     config() {
         this.router.get('/:id', asientosController_1.asientosController.listaAsientos);
+        this.router.post('/todos', asientosController_1.asientosController.listaTodosAsientos);
+        this.router.get('/', asientosController_1.asientosController.ultimoAsientos);
         this.router.post('/', asientosController_1.asientosController.crearAsiento);
-        /*       this.router.post('/login/:user', usuariosController.loginUsuario);
-      
-              this.router.get('/:id', usuariosController.usuario);
-              this.router.delete('/:id', usuariosController.eliminarUsuario);
-              this.router.put('/:id', usuariosController.modificarUsuario); */
     }
 }
 const asientosRoutes = new AsientosRoutes();

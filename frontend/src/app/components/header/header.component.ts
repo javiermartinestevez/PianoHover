@@ -10,10 +10,12 @@ import jwt_decode from "jwt-decode";
 export class HeaderComponent implements OnInit {
 
   usuario: any = {};
+  idUsuario: any;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.getIdUser();
   }
 
   cerrarSesion(): void {
@@ -23,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
   getIdUser(): void {
     let user = localStorage.getItem('token');
-    this.router.navigate(['/usuario/'+this.decode(user).id]);
+    this.idUsuario = this.decode(user).id;
   }
   decode(token: string | any) {
     let decodeId = jwt_decode(token);
@@ -38,6 +40,18 @@ export class HeaderComponent implements OnInit {
     }else {
       return false;
     }
+  }
+
+  isAdmin() {
+    if(this.isLoged()){
+      let user = localStorage.getItem('token');
+      if(this.decode(user).rol === 1){
+        return true;
+      }else {
+        return false;
+      }
+    }
+    return false;
   }
 
 }

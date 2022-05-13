@@ -13,11 +13,11 @@
             <i class="fa-solid fa-circle-info"></i>
           Más información
           </a>
-          <a routerLink="/conciertos/edit/{{ concierto.id }}" class="btn btn-warning btn-block m-2">
+          <a *ngIf="isAdmin()" routerLink="/conciertos/edit/{{ concierto.id }}" class="btn btn-warning btn-block m-2">
             <i class="fa-solid fa-circle-plus"></i>
             Editar Concierto
           </a>
-          <button class="btn btn-danger btn-block" (click)="eliminarConcierto(concierto.id)">
+          <button *ngIf="isAdmin()" class="btn btn-danger btn-block" (click)="eliminarConcierto(concierto.id)">
             <i class="far fa-trash-alt"></i>
           </button>
         </div>

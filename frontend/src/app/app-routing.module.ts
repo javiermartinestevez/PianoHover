@@ -9,18 +9,23 @@ import { RegisterComponent } from './components/register/register.component';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { LoginGuard } from './guards/login.guard';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { AdminGuard } from './guards/admin.guard';
+import { EditarComponent } from './components/perfil/editar/editar.component';
+import { HistorialComponent } from './components/perfil/historial/historial.component';
 
 const routes: Routes = [
 
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "conciertos", component: ConciertosComponent, canActivate: [LoginGuard]},
-  { path: "conciertos/add", component: ConciertosFormComponent },
-  { path: "conciertos/edit/:id", component: ConciertosFormComponent },
+  { path: "conciertos/add", component: ConciertosFormComponent, canActivate: [AdminGuard] },
+  { path: "conciertos/edit/:id", component: ConciertosFormComponent, canActivate: [AdminGuard] },
   { path: "concierto/:id", component: ConciertoComponent },
-  { path: "usuario/:id", component: PerfilComponent },
+  { path: "perfil/:id", component: PerfilComponent, canActivate: [LoginGuard] },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "administrador", component: AdministradorComponent },
+  { path: "perfil/:id/editarPerfil", component: EditarComponent, canActivate: [LoginGuard] },
+  { path: "perfil/:id/historial", component: HistorialComponent, canActivate: [LoginGuard] },
+  { path: "administrador", component: AdministradorComponent, canActivate: [AdminGuard] },
   { path: "**", component: HomeComponent, pathMatch: "full" },
 
 ];

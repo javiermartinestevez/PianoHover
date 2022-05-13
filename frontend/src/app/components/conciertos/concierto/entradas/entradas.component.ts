@@ -3,9 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { AsientosService } from 'src/app/services/asientos.service';
+import { EntradasService } from 'src/app/services/entradas.service';
 import { Asiento } from 'src/models/Asiento';
 import { Concierto } from 'src/models/Concierto';
+import { Entrada } from 'src/models/Entrada';
 import { CompradoComponent } from './comprado/comprado.component';
+import jwt_decode from "jwt-decode";
 
 
 @Component({
@@ -17,9 +20,10 @@ export class EntradasComponent implements OnInit {
 
   @Input() concierto: any;
 
+  usuario: any = {};
+
   precioNormal: number = 0;
   precioVIP: number = 0;
-
 
   public payPalConfig?: IPayPalConfig;
 
@@ -44,10 +48,20 @@ export class EntradasComponent implements OnInit {
     fila: 0,
     idConcierto: 0
   }
+  getAsineto: any = [];
+
+  entrada: Entrada | any = {
+    id: 0,
+    idUsuario: 0,
+    idAsiento: 0,
+    idConcierto: 0
+  }
 
   total: number = 0;
 
-  constructor(private asientosService: AsientosService,
+  constructor(
+    private asientosService: AsientosService,
+    private entradasService: EntradasService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private compradoService: NgbModal
@@ -56,8 +70,10 @@ export class EntradasComponent implements OnInit {
   ngOnInit(): void {
     this.listarAsientos();
     this.initConfig();
-
+    this.getToken();
   }
+
+
 
 
   private initConfig(): void { //Lógica de pago de PayPal
@@ -96,7 +112,7 @@ export class EntradasComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);;
-        console.log("COMPRADO", data.purchase_units[0].items);
+
         this.crearAsiento();
         this.abrirComprado(
           this.asientosSeleccionados,
@@ -104,7 +120,10 @@ export class EntradasComponent implements OnInit {
           this.precioVIP,
           this.precioNormal,
           this.concierto.titulo,
-          this.concierto.fecha
+          this.concierto.fecha,
+          this.entrada,
+          this.usuario.id,
+          data.id
         );
       },
       onCancel: (data, actions) => {
@@ -239,13 +258,43 @@ export class EntradasComponent implements OnInit {
         .subscribe(
           res => {
             console.log(res);
+          },
+          err => console.log(err)
+        );
 
-            console.log("JSON??", "JSON.stringify(res)");
+        this.asientosService.getUltimoAsientos()
+        .subscribe(
+          res => {
+            this.getAsineto = res;
+            this.crearEntrada(this.getAsineto[0].id);
           },
           err => console.log(err)
         );
     }
 
+  }
+
+  getToken() {
+    let token: string | any = localStorage.getItem('token');
+    let decodeId = jwt_decode(token);
+    this.usuario = decodeId;
+  }
+
+  crearEntrada(idAsiento: number) { //Crea una entrada vinculada al usuario, concierto y asiento.
+    const params = this.activatedRoute.snapshot.params['id'];
+    delete this.entrada.id;
+
+    this.entrada.idUsuario = this.usuario.id;
+    this.entrada.idAsiento = idAsiento;
+    this.entrada.idConcierto = Number(params);
+
+    this.entradasService.crearEntrada(this.entrada)
+    .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.log(err)
+    );
   }
 
   comprar():void {
@@ -255,7 +304,17 @@ export class EntradasComponent implements OnInit {
   }
 
   //abre componente en una ventana emergente
-  abrirComprado(items: any, total: any, precioVIP: any, precioNormal: any, nombre: any, fecha: any): void {
+  abrirComprado(
+    items: any,
+    total: any,
+    precioVIP: any,
+    precioNormal: any,
+    nombre: any,
+    fecha: any,
+    entrada: any,
+    idUsuario: any,
+    idCompra: any,
+    ): void {
     const modalRef = this.compradoService.open(CompradoComponent);
     modalRef.componentInstance.items = items;
     modalRef.componentInstance.total = total;
@@ -263,6 +322,9 @@ export class EntradasComponent implements OnInit {
     modalRef.componentInstance.precioNormal = precioNormal;
     modalRef.componentInstance.nombre = nombre;
     modalRef.componentInstance.fecha = fecha;
+    modalRef.componentInstance.entrada = entrada;
+    modalRef.componentInstance.idUsuario = idUsuario;
+    modalRef.componentInstance.idCompra = idCompra;
   }
 
 }

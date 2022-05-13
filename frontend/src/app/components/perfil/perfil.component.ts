@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import { Usuario } from 'src/models/Usuario';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-perfil',
@@ -9,23 +11,37 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class PerfilComponent implements OnInit {
 
+  usuario: Usuario | any = {
+    nombre: ''
+  };
+  id: any;
+
   constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsersService) { }
 
   ngOnInit(): void {
+    this.getId();
     this.consulta();
   }
+  getId(){
+    let token: any = localStorage.getItem('token');
+    let decodeToeken = jwt_decode(token)
+    let usuarioToken: any = decodeToeken;
+    this.id = usuarioToken.id;
+  }
 
-  consulta(): void {
-    const params = this.activatedRoute.snapshot.params;
-    if (params["id"]){
-      this.usuariosService.getUsuario(params["id"])
+  consulta(): void { //datos del usuario
+
+    if (this.id){
+      this.usuariosService.getUsuario(this.id)
         .subscribe(
           res => {
-            console.log(res);
+            this.usuario = res;
+            console.log("usuario: ",this.usuario);
           },
           err => console.error(err)
         )
     }
   }
+
 
 }

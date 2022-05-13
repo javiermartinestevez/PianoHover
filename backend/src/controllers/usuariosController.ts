@@ -20,8 +20,9 @@ class UsuariosController {
             const secret = keys.secret;
             const data = {
                 id: usuario[0].id,
+                rol: usuario[0].rol,
                 iat: dateStamp,
-                exp: dateStamp+1
+                exp: dateStamp+1800
             };
             const jwt = sign(data, secret);
             res.status(200).json(jwt);
@@ -32,8 +33,8 @@ class UsuariosController {
     }
 
     public async usuario(req: Request, res: Response): Promise<any> {
-        const { id } = req.body;
-        const usuario = await db.query("SELECT * FROM usuarios WHERE usuario = ?", [id]);
+        const { id } = req.params;
+        const usuario = await db.query("SELECT * FROM usuarios WHERE id = ?", [id]);
         if (usuario.length > 0) {
             return res.json(usuario[0]);
         }

@@ -29,6 +29,9 @@ import { LoginErrorComponent } from './components/error/login-error/login-error.
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { EditarComponent } from './components/perfil/editar/editar.component';
+import { HistorialComponent } from './components/perfil/historial/historial.component';
+import { SidebarComponent } from './components/perfil/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     LoginErrorComponent,
     HeaderComponent,
     FooterComponent,
-    PerfilComponent
+    PerfilComponent,
+    EditarComponent,
+    HistorialComponent,
+    SidebarComponent
 
   ],
   imports: [

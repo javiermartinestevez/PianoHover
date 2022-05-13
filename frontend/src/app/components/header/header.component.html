@@ -10,9 +10,9 @@
     </button>
 
     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-      <li><a routerLink="/conciertos" class="nav-link px-2 text-white">CONCIERTOS</a></li>
-      <li><a routerLink="/conciertos/add" class="nav-link px-2 text-white">AÑADIR CONCIERTOS</a></li>
-      <li *ngIf="isLoged()"><a (click)="getIdUser()" class="nav-link px-2 text-white">PERFIL</a></li>
+      <li><a routerLink="/conciertos" routerLinkActive="active" class="nav-link px-2 text-white">CONCIERTOS</a></li>
+      <li *ngIf="isAdmin()"><a routerLink="/conciertos/add" class="nav-link px-2 text-white">AÑADIR CONCIERTOS</a></li>
+      <li *ngIf="isLoged() && !isAdmin()"><a routerLink="/perfil/{{idUsuario}}" routerLinkActive="active" class="nav-link px-2 text-white">PERFIL</a></li>
     </ul>
 
     <div class="text-end">
@@ -28,7 +28,7 @@
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         Cerrar Sesión
       </a>
-      <a routerLink="/administrador" class="btn btn-danger m-2">
+      <a  *ngIf="isAdmin()" routerLink="/administrador" class="btn btn-danger m-2">
         <i class="fa-solid fa-lock-open"></i>
         Administrador
       </a>
