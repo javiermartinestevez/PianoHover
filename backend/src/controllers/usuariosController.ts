@@ -54,7 +54,7 @@ class UsuariosController {
 
     public async modificarUsuario(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await db.query('UPDATE usuarios SET ? WHERE usuario = ?', [req.body, id]);
+        await db.query('UPDATE usuarios SET ? WHERE id = ?', [req.body, id]);
         res.json({ text: "Modificar" + req.params.id })
     }
 

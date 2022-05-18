@@ -10,6 +10,11 @@ class AsientosController {
         const asientos = await db.query("SELECT * FROM asientos WHERE idConcierto = ?", [id]);
         res.json(asientos);
     }
+    public async listaAsientosUsuario (req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const asientos = await db.query("SELECT * FROM asientos WHERE idUsuario = ?", [id]);
+        res.json(asientos);
+    }
     public async listaTodosAsientos (req: Request, res: Response): Promise<void> {
         const asientos = await db.query("SELECT * FROM asientos");
         res.json(asientos);

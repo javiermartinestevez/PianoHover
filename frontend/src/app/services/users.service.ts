@@ -33,7 +33,7 @@ export class UsersService {
     return this.http.delete(`${this.API_URL}/usuarios/${id}`);
   }
 
-  modificarUsuario(id: string, usuario: Usuario): Observable<any> {
+  modificarUsuario(id: string | number, usuario: Usuario | any): Observable<any> {
     return this.http.put(`${this.API_URL}/usuarios/${id}`, usuario);
   }
 }

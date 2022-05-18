@@ -15,6 +15,9 @@ export class AsientosService {
   getAsientos(id: string) {
     return this.http.get(`${this.API_URL}/asientos/${id}`);
   }
+  listaAsientosUsuario(id: string) {
+    return this.http.get(`${this.API_URL}/asientos/usuario/${id}`);
+  }
   getUltimoAsientos() {
     return this.http.get(`${this.API_URL}/asientos`);
   }

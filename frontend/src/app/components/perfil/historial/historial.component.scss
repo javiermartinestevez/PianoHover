@@ -1,3 +1,16 @@
 .main-perfil{
   display: flex;
+  overflow: hidden;
+
+}
+.perfil {
+  width: 100%;
+  color: #fff;
+  max-height: 80vh;
+  overflow-y: auto;
+
+.card-body {
+  color: #000000;
+
+}
 }

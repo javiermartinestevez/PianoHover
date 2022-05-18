@@ -26,6 +26,13 @@ class AsientosController {
             res.json(asientos);
         });
     }
+    listaAsientosUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const asientos = yield database_1.default.query("SELECT * FROM asientos WHERE idUsuario = ?", [id]);
+            res.json(asientos);
+        });
+    }
     listaTodosAsientos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const asientos = yield database_1.default.query("SELECT * FROM asientos");

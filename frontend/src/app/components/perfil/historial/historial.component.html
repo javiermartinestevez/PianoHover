@@ -1,4 +1,32 @@
 <div class="main-perfil">
   <app-sidebar></app-sidebar>
-  <p>HISTORIAL</p>
+  <div class="perfil">
+    <div class="d-flex justify-content-center mt-5 mb-5">
+
+        <div class="col-md-4 pb-5">
+
+          <div class="card text-center">
+            <div class="card-header bg-dark d-flex justify-content-center">
+              <h4 class="text-white">Historial de Compra</h4>
+            </div>
+            <div class="card-body" *ngIf="entradas.length === 0">
+              <p > Aún no has comprado entradas.</p>
+            </div>
+            <div class="card-body" *ngFor="let entrada of entradas">
+              <p><strong>Fecha de compra: </strong>{{entrada.fecha_crt | date: 'dd-MM-yyyy H:mm' }}</p>
+              <p><strong>Butaca: </strong>{{entrada.fila}}{{entrada.letra}}</p>
+
+              <a (click)="descargar(entrada.idTransaccion, entrada.idConcierto, entrada.fila, entrada.letra)" class="btn btn-success btn-block">
+                <i class="fa-solid fa-download"></i>
+                Descargar
+              </a>
+              <hr>
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
+  </div>
 </div>

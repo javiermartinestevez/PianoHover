@@ -14,6 +14,7 @@ class AsientosRoutes {
         this.router.post('/todos', asientosController.listaTodosAsientos);
         this.router.get('/', asientosController.ultimoAsientos);
         this.router.post('/', asientosController.crearAsiento);
+        this.router.get('/usuario/:id', asientosController.listaAsientosUsuario);
     }
 }
 

@@ -10,7 +10,6 @@ const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const conciertosRoutes_1 = __importDefault(require("./routes/conciertosRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const asientosRoutes_1 = __importDefault(require("./routes/asientosRoutes"));
-const entradasRoutes_1 = __importDefault(require("./routes/entradasRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -29,7 +28,6 @@ class Server {
         this.app.use('/api/conciertos', conciertosRoutes_1.default);
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
         this.app.use('/api/asientos', asientosRoutes_1.default);
-        this.app.use('/api/entradas', entradasRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

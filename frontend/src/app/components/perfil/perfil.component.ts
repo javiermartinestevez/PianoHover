@@ -36,7 +36,6 @@ export class PerfilComponent implements OnInit {
         .subscribe(
           res => {
             this.usuario = res;
-            console.log("usuario: ",this.usuario);
           },
           err => console.error(err)
         )

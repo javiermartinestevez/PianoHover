@@ -6,7 +6,6 @@ import indexRoutes from "./routes/indexRoutes";
 import  conciertosRoutes from "./routes/conciertosRoutes";
 import usuariosRoutes from "./routes/usuariosRoutes";
 import asientosRoutes from "./routes/asientosRoutes";
-import entradasRoutes from "./routes/entradasRoutes";
 
 class Server {
 
@@ -31,7 +30,6 @@ class Server {
         this.app.use('/api/conciertos', conciertosRoutes);
         this.app.use('/api/usuarios', usuariosRoutes);
         this.app.use('/api/asientos', asientosRoutes);
-        this.app.use('/api/entradas', entradasRoutes);
     }
 
     start(): void {

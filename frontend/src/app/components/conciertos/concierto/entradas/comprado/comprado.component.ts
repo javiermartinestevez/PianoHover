@@ -26,8 +26,6 @@ export class CompradoComponent implements OnInit {
   @Input() idUsuario: any;
   @Input() idCompra: any;
 
-  @Input() entrada: any = {};
-
   usuario: any;
 
   logo: string = '../../../../../../assets/img/logo/logoPianoBotSlip.png';

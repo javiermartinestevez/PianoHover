@@ -73,7 +73,7 @@ class UsuariosController {
     modificarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE usuarios SET ? WHERE usuario = ?', [req.body, id]);
+            yield database_1.default.query('UPDATE usuarios SET ? WHERE id = ?', [req.body, id]);
             res.json({ text: "Modificar" + req.params.id });
         });
     }
