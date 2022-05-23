@@ -24,10 +24,6 @@ export class HomeComponent implements OnInit {
     this.initScrollAnumations();
   }
 
-  goConciertos(): void{
-    this.router.navigate(['conciertos']);
-  }
-
   initScrollAnumations(): void {
 
     //imagen 1
