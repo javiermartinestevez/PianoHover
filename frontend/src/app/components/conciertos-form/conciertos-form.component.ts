@@ -17,10 +17,11 @@ export class ConciertosFormComponent implements OnInit {
     fecha: new Date(),
     imagen: '',
     precioNormal: null,
-    precioVIP: null,
+    precioVip: null,
     asientos: 0,
     fecha_crt: new Date()
   };
+  ultimoConcierto: any = [];
 
   editar: boolean = false;
 
@@ -28,7 +29,7 @@ export class ConciertosFormComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
-    if (params["id"]){
+    if (params["id"]) {
       this.conciertosService.getConcierto(params["id"])
         .subscribe(
           res => {
@@ -39,6 +40,15 @@ export class ConciertosFormComponent implements OnInit {
         )
     }
   }
+  getUltimoConcierto(){
+    this.conciertosService.getUltimoConcierto()
+      .subscribe(
+        res => {
+          this.ultimoConcierto = res;
+        },
+        err => console.error(err)
+      )
+  }
 
   guardarConcierto() {
     delete this.concierto.id;
@@ -48,17 +58,39 @@ export class ConciertosFormComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-
-          console.log("JSON??", JSON.stringify(res));
-          this.router.navigate(['/conciertos']);
         },
         err => console.log(err)
       )
+
+    this.conciertosService.getUltimoConcierto()//coge el los datos del concierto recien creado
+      .subscribe(
+        res => {
+          this.ultimoConcierto = res;
+          //crea un concierto con los mismos datos que el anterior en otra tabla
+          this.conciertosService.agregarConciertoPublico(this.ultimoConcierto[0])
+          .subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/conciertos']);
+            },
+            err => console.log(err)
+          )
+        },
+        err => console.error(err)
+      )
+
   }
 
   editarConcierto() {
     delete this.concierto.fecha_crt;
     this.conciertosService.modificarConcierto(this.concierto.id, this.concierto)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => console.error(err)
+      )
+    this.conciertosService.modificarConciertoPublico(this.concierto.id, this.concierto)
       .subscribe(
         res => {
           console.log(res);

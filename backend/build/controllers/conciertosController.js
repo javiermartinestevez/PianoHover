@@ -21,7 +21,19 @@ class ConciertosController {
     }
     lista(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const conciertos = yield database_1.default.query("SELECT * FROM conciertos");
+            const conciertos = yield database_1.default.query("SELECT * FROM conciertos ORDER BY fecha DESC");
+            res.json(conciertos);
+        });
+    }
+    listaPublicos(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const conciertos = yield database_1.default.query("SELECT * FROM conciertospublicos ORDER BY fecha DESC");
+            res.json(conciertos);
+        });
+    }
+    ultimoConcierto(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const conciertos = yield database_1.default.query("SELECT * FROM conciertos ORDER BY id DESC LIMIT 1");
             res.json(conciertos);
         });
     }
@@ -44,14 +56,27 @@ class ConciertosController {
     eliminarConcierto(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM conciertos WHERE id = ?', [id]);
+            yield database_1.default.query('DELETE FROM conciertospublicos WHERE id = ?', [id]);
             res.json({ text: "ELiminado" + req.params.id });
+        });
+    }
+    crearConciertoPublico(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('INSERT INTO conciertospublicos set ?', [req.body]);
+            res.json({ text: "Creando conciertoPublico" });
         });
     }
     modificarConcierto(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('UPDATE conciertos SET ? WHERE id = ?', [req.body, id]);
+            res.json({ text: "Modificar" + req.params.id });
+        });
+    }
+    modificarConciertoPublico(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            yield database_1.default.query('UPDATE conciertospublicos SET ? WHERE id = ?', [req.body, id]);
             res.json({ text: "Modificar" + req.params.id });
         });
     }

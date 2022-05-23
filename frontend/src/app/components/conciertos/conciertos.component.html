@@ -17,7 +17,7 @@
             <i class="fa-solid fa-circle-plus"></i>
             Editar Concierto
           </a>
-          <button *ngIf="isAdmin()" class="btn btn-danger btn-block" (click)="eliminarConcierto(concierto.id)">
+          <button *ngIf="isAdmin()" class="btn btn-danger btn-block" (click)="eliminarConcierto(concierto.id, concierto.titulo)">
             <i class="far fa-trash-alt"></i>
           </button>
         </div>

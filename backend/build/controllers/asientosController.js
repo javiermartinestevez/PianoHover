@@ -51,5 +51,17 @@ class AsientosController {
             res.json({ text: "Creando asientos" });
         });
     }
+    conciertoMasVendido(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const asientos = yield database_1.default.query("SELECT idConcierto, COUNT(*) as cantidad FROM asientos GROUP BY idConcierto ORDER BY idConcierto DESC LIMIT 1");
+            res.json(asientos);
+        });
+    }
+    usuarioMasCompras(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const asientos = yield database_1.default.query("SELECT idUsuario, COUNT(*) as cantidad FROM asientos GROUP BY idUsuario ORDER BY idUsuario ASC LIMIT 1");
+            res.json(asientos);
+        });
+    }
 }
 exports.asientosController = new AsientosController();

@@ -1,0 +1,45 @@
+.main-admin{
+  display: flex;
+  overflow: hidden;
+}
+.main-lista{
+  margin-top: 10vh;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.row {
+  margin-bottom: 5vh;
+}
+.header-main{
+  position:relative;
+}
+.scroll-usuarios{
+  max-height: 70vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+  border: outset;
+}
+.scroll-usuarios:before{
+	content:"";
+	position: absolute;
+	width:99%;
+	height: 40px;
+	display: table;
+	z-index: 10;
+	background:#212529;
+}
+table.fixed-header th div{
+  position: absolute;
+  z-index: 11;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 1043px){
+
+  .col-md-4 {
+      flex: 0 0 auto;
+      width: 70%;
+  }
+}

@@ -1,0 +1,62 @@
+.sideBar {
+  width: 15vw;
+  min-width: 200px;
+  min-height: 100vh;
+  border-top: double;
+  border-bottom: double;
+}
+.visible {
+  display: none;
+}
+a {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1043px){
+  .sideBar {
+    min-height: 148vh;
+  }
+
+}
+@media only screen and (max-width: 846px){
+  .sideBar {
+    min-height: 151vh;
+  }
+
+}
+@media only screen and (max-width: 684px){
+  .sideBar {
+    min-height: 155vh;
+  }
+}
+
+@media only screen and (max-width: 666px) {
+  .sideBar {
+    min-width: 110px;
+  }
+  .none {
+    display: none;
+  }
+  .visible {
+    display: block !important;
+  }
+  a{
+    width: 93px;
+  }
+
+  @media only screen and (max-width: 472px){
+    .sideBar {
+      min-height: 160vh;
+    }
+  }
+  @media only screen and (max-width: 446px){
+    .sideBar {
+      min-height: 174vh;
+    }
+  }
+  @media only screen and (max-width: 406px){
+    .sideBar {
+      min-height: 180vh;
+    }
+  }
+}

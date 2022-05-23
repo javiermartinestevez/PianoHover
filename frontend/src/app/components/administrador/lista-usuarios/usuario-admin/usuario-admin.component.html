@@ -1,0 +1,64 @@
+<div class="main-admin">
+  <app-sidebar-admin></app-sidebar-admin>
+
+  <div class="datos">
+
+    <div class="mt-5 mb-5 ">
+      <div class="row">
+
+        <div class="col-md-4 pb-5">
+          <div class="card text-center">
+            <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
+              <h4 class="text-white">Datos de usuario</h4>
+            </div>
+            <div class="card-body">
+              <h4>ID: <strong>{{usuario.id}}</strong></h4>
+              <h4>Nombre: <strong>{{usuario.nombre}}</strong></h4>
+              <h4>Email: <strong>{{usuario.email}}</strong></h4>
+              <h4>Nombre Usuario: <strong>{{usuario.usuario}}</strong></h4>
+              <h4>Rol: <strong>{{usuario.rol === 0 ? "Usuario" : "Administrador"}}</strong></h4>
+              <a routerLink="/perfil/{{usuario.id}}/editarPerfil" class="btn btn-warning">EDITAR</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 pb-5">
+          <div class="card text-center">
+            <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
+              <h4 class="text-white">Historial de compra</h4>
+            </div>
+            <div class="card-body">
+              <div class="perfil">
+                <div class="d-flex justify-content-center mt-5 mb-5">
+                  <div>
+                    <div *ngIf="entradas.length === 0" class="text-black">
+                      <p> Aún no ha comprado entradas.</p>
+                    </div>
+                    <div class="card-body" *ngFor="let entrada of entradas">
+                      <p><strong>Fecha de compra: </strong>{{entrada.fecha_crt | date: 'dd-MM-yyyy H:mm' }}</p>
+                      <p><strong>Butaca: </strong>{{entrada.fila}}{{entrada.letra}}</p>
+                      <hr>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 pb-5">
+          <div class="card text-center">
+            <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
+              <h4 class="text-white">Total entradas compradas</h4>
+            </div>
+            <div class="card-body">
+              <h4>{{entradas.length}}</h4>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

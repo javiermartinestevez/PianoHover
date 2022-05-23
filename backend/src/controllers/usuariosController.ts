@@ -48,7 +48,7 @@ class UsuariosController {
 
     public async eliminarUsuario(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await db.query('DELETE FROM usuarios WHERE usuario = ?', [id]);
+        await db.query('DELETE FROM usuarios WHERE id = ?', [id]);
         res.json({ text: "ELiminado" + req.params.id })
     }
 

@@ -1,5 +1,8 @@
 .navbar {
   height: 12vh;
+  .visible {
+    display: none;
+  }
   .logo-main {
     width: 60px;
     height: 60px;
@@ -9,5 +12,25 @@
   }
   .active {
     color: #b91e1e !important;
+  }
+  .navbar-toggler{
+    color: aliceblue;
+  }
+}
+@media only screen and (max-width: 1000px) {
+
+}
+
+
+@media only screen and (max-width: 715px) {
+  .logo-main-solo {
+    width: 40px;
+    height: 40px;
+  }
+  .none {
+    display: none;
+  }
+  .visible {
+    display: block !important;
   }
 }

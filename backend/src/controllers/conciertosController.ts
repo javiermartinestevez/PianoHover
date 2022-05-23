@@ -6,7 +6,15 @@ class ConciertosController {
     public router: Router = Router();
 
     public async lista (req: Request, res: Response) {
-        const conciertos = await db.query("SELECT * FROM conciertos");
+        const conciertos = await db.query("SELECT * FROM conciertos ORDER BY fecha DESC");
+        res.json(conciertos);
+    }
+    public async listaPublicos (req: Request, res: Response) {
+        const conciertos = await db.query("SELECT * FROM conciertospublicos ORDER BY fecha DESC");
+        res.json(conciertos);
+    }
+    public async ultimoConcierto (req: Request, res: Response) {
+        const conciertos = await db.query("SELECT * FROM conciertos ORDER BY id DESC LIMIT 1");
         res.json(conciertos);
     }
 
@@ -26,14 +34,26 @@ class ConciertosController {
 
     public async eliminarConcierto(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await db.query('DELETE FROM conciertos WHERE id = ?', [id]);
+        await db.query('DELETE FROM conciertospublicos WHERE id = ?', [id]);
         res.json({text: "ELiminado"+ req.params.id})
     }
+    public async crearConciertoPublico(req: Request, res: Response): Promise<void> {
+        await db.query('INSERT INTO conciertospublicos set ?', [req.body]);
+        res.json({text: "Creando conciertoPublico"})
+    }
+
     public async modificarConcierto(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         await db.query('UPDATE conciertos SET ? WHERE id = ?', [req.body, id]);
         res.json({text: "Modificar"+ req.params.id})
     }
+    public async modificarConciertoPublico(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        await db.query('UPDATE conciertospublicos SET ? WHERE id = ?', [req.body, id]);
+        res.json({text: "Modificar"+ req.params.id})
+    }
+    
+    
 
 }
 

@@ -1,36 +1,69 @@
 <header class="navbar p-3 bg-dark text-white">
   <div class="container-fluid d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-    <a class="nav-link px-5 text-white navbar-brand" href="/">
+
+    <a class="none nav-link px-5 text-white navbar-brand" href="/">
       <img class="logo-main" alt="logo" src="../assets/img/logo/logo.png"/>
-      PianoHover</a>
+      PianoHover
+    </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-      <li><a routerLink="/conciertos" routerLinkActive="active" class="nav-link px-2 text-white">CONCIERTOS</a></li>
-      <li *ngIf="isAdmin()"><a routerLink="/conciertos/add" class="nav-link px-2 text-white">AÑADIR CONCIERTOS</a></li>
-      <li *ngIf="isLoged() && !isAdmin()"><a routerLink="/perfil/{{idUsuario}}" routerLinkActive="active" class="nav-link px-2 text-white">PERFIL</a></li>
+
+    <ul class="nav col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li>
+        <a class="visible nav-link text-white" href="/">
+          <img class="logo-main-solo" alt="logo" src="../assets/img/logo/logoPianoMid.png"/>
+        </a>
+    </li>
+      <li><a routerLink="/conciertos" routerLinkActive="active" class="none nav-link px-2 text-white">CONCIERTOS</a></li>
+      <li><a routerLink="/conciertos" routerLinkActive="active" class="visible nav-link px-2 text-white"><i class="fa-solid fa-music"></i></a></li>
+
+      <li>
+        <a routerLink="/login" *ngIf="!isLoged()"class="visible btn btn-outline-light me-2">
+          <i class="fa-solid fa-user-plus"></i>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/register" *ngIf="!isLoged()" class="visible btn btn-outline-light">
+          <i class="fa-solid fa-circle-plus"></i>
+        </a>
+      </li>
+
+      <li *ngIf="isAdmin()"><a routerLink="/conciertos/add" routerLinkActive="active" class="nav-link px-2 text-white"><i class="fa-solid fa-square-plus"></i></a></li>
+
+      <li *ngIf="isLoged() && !isAdmin()"><a routerLink="/perfil/{{idUsuario}}" routerLinkActive="active" class="none nav-link px-2 text-white">PERFIL</a></li>
+      <li *ngIf="isLoged() && !isAdmin()"><a routerLink="/perfil/{{idUsuario}}" routerLinkActive="active" class="visible nav-link px-2 text-white"><i class="fa-solid fa-user"></i></a></li>
+      <li>
+        <a (click)="cerrarSesion()" *ngIf="isLoged()" class="visible btn btn-outline-light m-2">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+      </li>
+
+      <li>
+        <a  *ngIf="isAdmin()" routerLink="/administrador" class="visible btn btn-danger m-2">
+          <i class="fa-solid fa-lock-open"></i>
+        </a>
+      </li>
     </ul>
 
     <div class="text-end">
-      <a routerLink="/login" *ngIf="!isLoged()"class="btn btn-outline-light me-2">
+
+      <a routerLink="/login" *ngIf="!isLoged()"class="none btn btn-outline-light me-2">
         <i class="fa-solid fa-user"></i>
         Iniciar Sesión
       </a>
-      <a routerLink="/register" *ngIf="!isLoged()" class="btn btn-outline-light">
+
+      <a routerLink="/register" *ngIf="!isLoged()" class="none btn btn-outline-light">
         <i class="fa-solid fa-circle-plus"></i>
         Registrarse
       </a>
-      <a (click)="cerrarSesion()" *ngIf="isLoged()" class="btn btn-outline-light m-2">
+
+      <a (click)="cerrarSesion()" *ngIf="isLoged()" class="none btn btn-outline-light m-2">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         Cerrar Sesión
       </a>
-      <a  *ngIf="isAdmin()" routerLink="/administrador" class="btn btn-danger m-2">
+
+      <a  *ngIf="isAdmin()" routerLink="/administrador" class="none btn btn-danger m-2">
         <i class="fa-solid fa-lock-open"></i>
-        Administrador
       </a>
     </div>
   </div>

@@ -9,10 +9,14 @@ class ConciertosRoutes {
     }
     config() {
         this.router.get('/', conciertosController_1.conciertosController.lista);
+        this.router.get('/publicos', conciertosController_1.conciertosController.listaPublicos);
+        this.router.get('/ultimo', conciertosController_1.conciertosController.ultimoConcierto);
         this.router.get('/:id', conciertosController_1.conciertosController.concierto);
         this.router.post('/', conciertosController_1.conciertosController.crearConcierto);
+        this.router.post('/publico', conciertosController_1.conciertosController.crearConciertoPublico);
         this.router.delete('/:id', conciertosController_1.conciertosController.eliminarConcierto);
         this.router.put('/:id', conciertosController_1.conciertosController.modificarConcierto);
+        this.router.put('/publico/:id', conciertosController_1.conciertosController.modificarConciertoPublico);
     }
 }
 const conciertosRoutes = new ConciertosRoutes();

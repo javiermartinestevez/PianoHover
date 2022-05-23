@@ -32,6 +32,15 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { EditarComponent } from './components/perfil/editar/editar.component';
 import { HistorialComponent } from './components/perfil/historial/historial.component';
 import { SidebarComponent } from './components/perfil/sidebar/sidebar.component';
+import { ListaUsuariosComponent } from './components/administrador/lista-usuarios/lista-usuarios.component';
+import { SidebarAdminComponent } from './components/administrador/sidebar-admin/sidebar-admin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { DialogoEliminarComponent } from './components/dialogo-eliminar/dialogo-eliminar.component';
+import { UsuarioAdminComponent } from './components/administrador/lista-usuarios/usuario-admin/usuario-admin.component';
+import { ListaConciertosComponent } from './components/administrador/lista-conciertos/lista-conciertos.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +64,12 @@ import { SidebarComponent } from './components/perfil/sidebar/sidebar.component'
     PerfilComponent,
     EditarComponent,
     HistorialComponent,
-    SidebarComponent
+    SidebarComponent,
+    ListaUsuariosComponent,
+    SidebarAdminComponent,
+    DialogoEliminarComponent,
+    UsuarioAdminComponent,
+    ListaConciertosComponent
 
   ],
   imports: [
@@ -65,6 +79,12 @@ import { SidebarComponent } from './components/perfil/sidebar/sidebar.component'
     FormsModule,
     NgxPayPalModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
+  ],
+  entryComponents: [
+    DialogoEliminarComponent
   ],
   providers: [
     ConciertosService

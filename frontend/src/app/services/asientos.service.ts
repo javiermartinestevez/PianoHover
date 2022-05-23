@@ -21,6 +21,12 @@ export class AsientosService {
   getUltimoAsientos() {
     return this.http.get(`${this.API_URL}/asientos`);
   }
+  conciertoMasVendido() {
+    return this.http.get(`${this.API_URL}/asientos/vendido`);
+  }
+  usuarioMasCompras() {
+    return this.http.get(`${this.API_URL}/asientos/comprado`);
+  }
   crearAsiento(asiento: Asiento) {
     return this.http.post(`${this.API_URL}/asientos`, asiento);
   }

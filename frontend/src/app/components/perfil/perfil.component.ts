@@ -14,25 +14,17 @@ export class PerfilComponent implements OnInit {
   usuario: Usuario | any = {
     nombre: ''
   };
-  id: any;
 
   constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsersService) { }
 
   ngOnInit(): void {
-    this.getId();
     this.consulta();
-  }
-  getId(){
-    let token: any = localStorage.getItem('token');
-    let decodeToeken = jwt_decode(token)
-    let usuarioToken: any = decodeToeken;
-    this.id = usuarioToken.id;
   }
 
   consulta(): void { //datos del usuario
-
-    if (this.id){
-      this.usuariosService.getUsuario(this.id)
+    const params = this.activatedRoute.snapshot.params['id'];
+    if (params){
+      this.usuariosService.getUsuario(params)
         .subscribe(
           res => {
             this.usuario = res;

@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="col entradas-container">
+    <div class="col entradas-container"  *ngIf="moment(concierto.fecha).isSameOrAfter(fechaActual)">
       <h1 class="text-white text-center mt-5">COMPRAR ENTRADAS</h1>
       <div class="escenario">
         <img src="../../../../assets/img/escenario.png" alt="escenario" class="img-escenario">

@@ -1,3 +1,20 @@
 .main-perfil{
   display: flex;
 }
+.visible {
+  display: none;
+}
+.card {
+  min-width: max-content;
+}
+
+
+@media only screen and (max-width: 666px) {
+
+  .none {
+    display: none;
+  }
+  .visible {
+    display: block !important;
+  }
+}

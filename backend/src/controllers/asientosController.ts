@@ -29,6 +29,16 @@ class AsientosController {
         res.json({text: "Creando asientos"})
     }
 
+    public async conciertoMasVendido (req: Request, res: Response): Promise<void> {
+        const asientos = await db.query("SELECT idConcierto, COUNT(*) as cantidad FROM asientos GROUP BY idConcierto ORDER BY idConcierto DESC LIMIT 1");
+        res.json(asientos);
+    }
+
+    public async usuarioMasCompras (req: Request, res: Response): Promise<void> {
+        const asientos = await db.query("SELECT idUsuario, COUNT(*) as cantidad FROM asientos GROUP BY idUsuario ORDER BY idUsuario ASC LIMIT 1");
+        res.json(asientos);
+    }
+
 
 }
 

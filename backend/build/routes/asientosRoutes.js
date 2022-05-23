@@ -8,6 +8,8 @@ class AsientosRoutes {
         this.config();
     }
     config() {
+        this.router.get('/vendido', asientosController_1.asientosController.conciertoMasVendido);
+        this.router.get('/comprado', asientosController_1.asientosController.usuarioMasCompras);
         this.router.get('/:id', asientosController_1.asientosController.listaAsientos);
         this.router.post('/todos', asientosController_1.asientosController.listaTodosAsientos);
         this.router.get('/', asientosController_1.asientosController.ultimoAsientos);

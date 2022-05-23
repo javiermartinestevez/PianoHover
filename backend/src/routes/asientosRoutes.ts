@@ -10,6 +10,8 @@ class AsientosRoutes {
     }
 
     config(): void {
+        this.router.get('/vendido', asientosController.conciertoMasVendido);
+        this.router.get('/comprado', asientosController.usuarioMasCompras);
         this.router.get('/:id', asientosController.listaAsientos);
         this.router.post('/todos', asientosController.listaTodosAsientos);
         this.router.get('/', asientosController.ultimoAsientos);
