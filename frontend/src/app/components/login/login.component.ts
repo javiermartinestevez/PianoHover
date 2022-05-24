@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       .subscribe(token => {
         localStorage.setItem("token", token);
         this.router.navigate(['/conciertos']);
-        console.log(token)
       },
       err => this.errorService.open(LoginErrorComponent)
       )

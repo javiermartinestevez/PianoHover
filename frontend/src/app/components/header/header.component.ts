@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.getIdUser();
+    this.isLoged();
   }
 
   cerrarSesion(): void {
@@ -36,12 +36,12 @@ export class HeaderComponent implements OnInit {
   isLoged() {
     let user = localStorage.getItem('token');
     if(user){
+      this.getIdUser();
       return true;
     }else {
       return false;
     }
   }
-
   isAdmin() {
     if(this.isLoged()){
       let user = localStorage.getItem('token');

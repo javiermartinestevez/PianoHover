@@ -8,7 +8,7 @@ import usuariosRoutes from "./routes/usuariosRoutes";
 import asientosRoutes from "./routes/asientosRoutes";
 
 class Server {
-
+    
     public app: Application;
 
     constructor() {
