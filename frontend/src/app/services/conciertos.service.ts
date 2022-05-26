@@ -30,19 +30,13 @@ export class ConciertosService {
   agregarConcierto(concierto: Concierto) {
     return this.http.post(`${this.API_URL}/conciertos`, concierto);
   }
-  agregarConciertoPublico(concierto: Concierto) {
-    return this.http.post(`${this.API_URL}/conciertos/publico`, concierto);
-  }
 
-  eliminarConcierto(id: string) {
-    return this.http.delete(`${this.API_URL}/conciertos/${id}`);
+  eliminarConcierto(id: string, modificadoConcierto: Concierto) {
+    return this.http.put(`${this.API_URL}/conciertos/eliminar/${id}`, modificadoConcierto);
   }
 
   modificarConcierto(id: string | number, modificadoConcierto: Concierto): Observable<any> {
     return this.http.put(`${this.API_URL}/conciertos/${id}`, modificadoConcierto);
-  }
-  modificarConciertoPublico(id: string | number, modificadoConcierto: Concierto): Observable<any> {
-    return this.http.put(`${this.API_URL}/conciertos/publico/${id}`, modificadoConcierto);
   }
 
 }

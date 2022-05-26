@@ -3,31 +3,37 @@
     <div class="col-md-4 offset-md-2">
       <div class="card">
         <div class="card-body">
-          <form>
+          <form novalidate #f="ngForm">
             <div class="form-group mb-3">
-              <input type="text" [(ngModel)]="concierto.titulo" name="title" placeholder="Title" class="form-control"
-                autofocus>
+              <span>Título: *</span>
+              <input type="text" [(ngModel)]="concierto.titulo" name="title" placeholder="Título" class="form-control"
+                autofocus required>
             </div>
             <div class="form-group mb-3">
-              <textarea name="description" [(ngModel)]="concierto.descripcion" placeholder="Description"
-                class="form-control" rows="2"></textarea>
+              <span>Descripción: *</span>
+              <textarea name="description" [(ngModel)]="concierto.descripcion" placeholder="Descripción"
+                class="form-control" rows="2" required></textarea>
             </div>
             <div class="form-group mb-3">
+              <span>Imagen URL: *</span>
               <input type="url" [(ngModel)]="concierto.imagen" name="imagen" placeholder="Imagen URL"
-                class="form-control">
+                class="form-control" required>
             </div>
             <div class="form-group mb-3">
-              <input type="date" [(ngModel)]="concierto.fecha" name="fecha" placeholder="Fecha" class="form-control">
+              <span>Fecha del concierto: *</span>
+              <input type="date" [(ngModel)]="concierto.fecha" name="fecha" placeholder="Fecha" class="form-control" required>
             </div>
             <div class="form-group mb-3">
-              <input type="text" [(ngModel)]="concierto.precioNormal" name="precioNormal" placeholder="Precio Normal"
-                class="form-control mb-3">
+              <span>Precion normal: *</span>
+              <input type="number" [(ngModel)]="concierto.precioNormal" name="precioNormal" placeholder="Precio Normal"
+                class="form-control mb-3" required>
             </div>
             <div class="form-group mb-3">
-              <input type="text" [(ngModel)]="concierto.precioVip" name="precioVIP" placeholder="Precio VIP"
-                class="form-control mb-3">
+              <span>Precio VIP: *</span>
+              <input type="number" [(ngModel)]="concierto.precioVip" name="precioVIP" placeholder="Precio VIP"
+                class="form-control mb-3" required>
             </div>
-            <button (click)="editar ? editarConcierto() : guardarConcierto()" class="btn btn-success btn-block">
+            <button *ngIf="!f.invalid" (click)="editar ? editarConcierto() : guardarConcierto()" class="btn btn-success btn-block">
               Guardar
             </button>
           </form>

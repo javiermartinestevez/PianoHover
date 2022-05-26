@@ -1,22 +1,26 @@
-.main-admin{
+.main-admin {
   display: flex;
   overflow: hidden;
 }
-.datos{
-  margin-top: 10vh;
+
+.datos {
+  background-image: url(../../../../../assets/img/perfil.jpg);
+  background-size: cover;
+  margin: 14px 14px 14px 14px;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: flex-start;
 }
+
 .perfil {
   width: 100%;
   color: #fff;
   max-height: 24vh;
   overflow-y: auto;
 
-.card-body {
-  color: #000000;
+  .card-body {
+    color: #000000;
 
-}
+  }
 }

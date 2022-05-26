@@ -2,10 +2,10 @@
   <app-sidebar-admin></app-sidebar-admin>
 
   <div class="main-lista">
-    <div class="row">
+    <div class="row mt-5">
       <div>
-        <div class="header-main">
-          <h2>
+        <div class="header-main text-white">
+          <h2 class="card-header bg-dark">
             Listado de usuarios registrados
           </h2>
           <div class="scroll-usuarios">
@@ -35,11 +35,11 @@
                   <td>{{usuario.nombre}}</td>
                   <td>{{usuario.email}}</td>
                   <td>{{usuario.usuario}}</td>
-                  <td>
+                  <td class="visible">
                     <a routerLink="/administrador/lista-usuarios/{{usuario.id}}" class="btn btn-info m-1">
                       <i class="fa-solid fa-magnifying-glass-plus"></i>
                     </a>
-                    <button class="btn btn-danger" (click)="eliminarUsuario(usuario.id, usuario.nombre)">
+                    <button class="btn btn-danger m-1" (click)="eliminarUsuario(usuario.id, usuario.nombre)">
                       <i class="fa-solid fa-trash"></i>
                     </button>
                   </td>

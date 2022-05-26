@@ -15,10 +15,8 @@ class ConciertosRoutes {
         this.router.get('/ultimo', conciertosController.ultimoConcierto);
         this.router.get('/:id', conciertosController.concierto);
         this.router.post('/', conciertosController.crearConcierto);
-        this.router.post('/publico', conciertosController.crearConciertoPublico);
-        this.router.delete('/:id', conciertosController.eliminarConcierto);
+        this.router.put('/eliminar/:id', conciertosController.eliminarConcierto);
         this.router.put('/:id', conciertosController.modificarConcierto);
-        this.router.put('/publico/:id', conciertosController.modificarConciertoPublico);
     }
 }
 

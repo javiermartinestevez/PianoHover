@@ -27,7 +27,7 @@ class ConciertosController {
     }
     listaPublicos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const conciertos = yield database_1.default.query("SELECT * FROM conciertospublicos ORDER BY fecha DESC");
+            const conciertos = yield database_1.default.query("SELECT * FROM conciertos WHERE eliminado = 0 ORDER BY fecha DESC");
             res.json(conciertos);
         });
     }
@@ -49,14 +49,14 @@ class ConciertosController {
     }
     crearConcierto(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO conciertos set ?', [req.body]);
+            yield database_1.default.query('INSERT INTO conciertos SET ?', [req.body]);
             res.json({ text: "Creando concierto" });
         });
     }
     eliminarConcierto(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM conciertospublicos WHERE id = ?', [id]);
+            yield database_1.default.query('UPDATE conciertos SET eliminado = 1 WHERE id = ?', [id]);
             res.json({ text: "ELiminado" + req.params.id });
         });
     }

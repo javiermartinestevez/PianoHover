@@ -1,10 +1,10 @@
 <div class="main-admin">
   <app-sidebar-admin></app-sidebar-admin>
   <div class="main-lista">
-    <div class="row">
+    <div class="row mt-5">
       <div>
-        <div class="header-main">
-          <h2>
+        <div class="header-main text-white">
+          <h2 class="card-header bg-dark">
             Listado de todos conciertos publicados
           </h2>
           <div class="scroll-usuarios">
@@ -35,13 +35,9 @@
                 </tr>
 
                 <tr *ngFor="let concierto of conciertos">
-                  <td>{{concierto.titulo}}</td>
-                  <td>{{concierto.fecha | date: 'yyyy-MM-dd' }}</td>
-                  <td>
-                    <a routerLink="/administrador/lista-conciertos/" class="btn btn-info m-1">
-                      <i class="fa-solid fa-magnifying-glass-plus"></i>
-                    </a>
-                  </td>
+                  <td><strong>{{concierto.titulo}}</strong></td>
+                  <td><strong>{{concierto.fecha | date: 'yyyy-MM-dd' }}</strong></td>
+
                 </tr>
               </tbody>
             </table>
@@ -49,7 +45,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 pb-5">
+    <div class="col-md-4 pb-5 mt-5">
 
       <div class="card text-center mb-2">
         <div class="card-header bg-dark d-flex justify-content-between aling-items-center">

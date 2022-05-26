@@ -1,16 +1,26 @@
-.main-perfil{
+.main-perfil {
   display: flex;
   overflow: hidden;
 
 }
+
 .perfil {
   width: 100%;
   color: #fff;
-  max-height: 80vh;
-  overflow-y: auto;
+  max-height: 100vh;
+  background-image: url(../../../../assets/img/perfil.jpg);
+  background-size: cover;
+  margin: 14px 14px 14px 14px;
 
-.card-body {
-  color: #000000;
+  .lista {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
 
-}
+  .card-body {
+    color: #000000;
+  }
+  card-header {
+
+  }
 }

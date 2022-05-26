@@ -111,7 +111,7 @@ export class CompradoComponent implements OnInit {
     pdf.add('ID transacción: '+ this.idCompra);
 
     pdf.add(' ');
-    pdf.add('TOTAL: '+ this.total+'€');
+    pdf.add(new Txt('TOTAL: '+ this.total+'€').bold().end);
 
 
 

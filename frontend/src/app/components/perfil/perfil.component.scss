@@ -1,17 +1,18 @@
-.main-perfil{
+.main-perfil {
   display: flex;
   overflow: hidden;
 }
+
 .perfil {
   width: 100%;
   background-image: url(../../../assets/img/perfil.jpg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   max-width: 84vw;
   margin: 14px 14px 14px 14px;
   color: #fff;
 
-.card-body {
-  color: #000000;
-}
+  .card-body {
+    color: #000000;
+  }
 }

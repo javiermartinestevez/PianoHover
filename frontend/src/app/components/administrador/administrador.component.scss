@@ -3,7 +3,9 @@
   overflow: hidden;
 }
 .main-lista{
-  margin-top: 10vh;
+  background-image: url(../../../assets/img/perfil.jpg);
+  background-size: cover;
+  margin: 14px 14px 14px 14px;
   display: flex;
   width: 100%;
   justify-content: space-evenly;

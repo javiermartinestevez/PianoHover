@@ -10,7 +10,7 @@ class ConciertosController {
         res.json(conciertos);
     }
     public async listaPublicos (req: Request, res: Response) {
-        const conciertos = await db.query("SELECT * FROM conciertospublicos ORDER BY fecha DESC");
+        const conciertos = await db.query("SELECT * FROM conciertos WHERE eliminado = 0 ORDER BY fecha DESC");
         res.json(conciertos);
     }
     public async ultimoConcierto (req: Request, res: Response) {
@@ -28,15 +28,16 @@ class ConciertosController {
     }
 
     public async crearConcierto(req: Request, res: Response): Promise<void> {
-        await db.query('INSERT INTO conciertos set ?', [req.body]);
+        await db.query('INSERT INTO conciertos SET ?', [req.body]);
         res.json({text: "Creando concierto"})
     }
 
     public async eliminarConcierto(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await db.query('DELETE FROM conciertospublicos WHERE id = ?', [id]);
+        await db.query('UPDATE conciertos SET eliminado = 1 WHERE id = ?', [id]);
         res.json({text: "ELiminado"+ req.params.id})
     }
+
     public async crearConciertoPublico(req: Request, res: Response): Promise<void> {
         await db.query('INSERT INTO conciertospublicos set ?', [req.body]);
         res.json({text: "Creando conciertoPublico"})

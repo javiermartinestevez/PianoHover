@@ -1,5 +1,11 @@
 .main-perfil{
   display: flex;
+  max-height: 100vh;
+}
+.perfil {
+  background-image: url(../../../../assets/img/perfil.jpg);
+  background-size: cover;
+
 }
 .visible {
   display: none;
@@ -8,7 +14,6 @@
   min-width: max-content;
 }
 
-
 @media only screen and (max-width: 666px) {
 
   .none {
@@ -16,5 +21,6 @@
   }
   .visible {
     display: block !important;
+    color: #ffffff;
   }
 }

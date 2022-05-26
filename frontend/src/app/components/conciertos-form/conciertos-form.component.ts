@@ -19,7 +19,8 @@ export class ConciertosFormComponent implements OnInit {
     precioNormal: null,
     precioVip: null,
     asientos: 0,
-    fecha_crt: new Date()
+    fecha_crt: new Date(),
+    eliminado: 0
   };
   ultimoConcierto: any = [];
 
@@ -58,27 +59,10 @@ export class ConciertosFormComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          this.router.navigate(['/conciertos']);
         },
         err => console.log(err)
       )
-
-    this.conciertosService.getUltimoConcierto()//coge el los datos del concierto recien creado
-      .subscribe(
-        res => {
-          this.ultimoConcierto = res;
-          //crea un concierto con los mismos datos que el anterior en otra tabla
-          this.conciertosService.agregarConciertoPublico(this.ultimoConcierto[0])
-          .subscribe(
-            res => {
-              console.log(res);
-              this.router.navigate(['/conciertos']);
-            },
-            err => console.log(err)
-          )
-        },
-        err => console.error(err)
-      )
-
   }
 
   editarConcierto() {
@@ -87,14 +71,6 @@ export class ConciertosFormComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-        },
-        err => console.error(err)
-      )
-    this.conciertosService.modificarConciertoPublico(this.concierto.id, this.concierto)
-      .subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/conciertos']);
         },
         err => console.error(err)
       )

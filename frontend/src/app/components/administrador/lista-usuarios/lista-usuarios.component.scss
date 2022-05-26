@@ -3,21 +3,32 @@
   overflow: hidden;
 }
 .main-lista{
-  margin-top: 10vh;
+  background-image: url(../../../../assets/img/perfil.jpg);
+  background-size: cover;
+  margin: 14px 14px 14px 14px;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: flex-start;
 }
+.none {
+  display: none;
+}
 
 .header-main{
   position:relative;
 }
+.card-header {
+  border: ridge;
+}
+.table{
+  overflow: auto;
+}
 .scroll-usuarios{
   max-height: 70vh;
-	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow: auto;
   border: outset;
+  background-color: white;
 }
 .scroll-usuarios:before{
 	content:"";
@@ -32,6 +43,16 @@ table.fixed-header th div{
   position: absolute;
   z-index: 11;
   color: #ffffff;
+}
+@media only screen and (max-width: 550px){
+
+  table.fixed-header th div{
+    position: relative;
+  }
+  .row{
+    max-width: 70vw;
+  }
+
 }
 
 

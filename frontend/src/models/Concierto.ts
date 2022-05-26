@@ -8,4 +8,5 @@ export interface Concierto {
   precioVIP: number;
   asientos: number;
   fecha_crt?: Date;
+  eliminado: number;
 }

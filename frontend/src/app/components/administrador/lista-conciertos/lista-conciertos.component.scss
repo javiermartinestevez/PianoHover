@@ -3,7 +3,9 @@
   overflow: hidden;
 }
 .main-lista{
-  margin-top: 10vh;
+  background-image: url(../../../../assets/img/perfil.jpg);
+  background-size: cover;
+  margin: 14px 14px 14px 14px;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -11,6 +13,9 @@
 }
 .row {
   margin-bottom: 5vh;
+}
+.card-header {
+  border: ridge;
 }
 .header-main{
   position:relative;
@@ -20,6 +25,7 @@
 	overflow-x: hidden;
 	overflow-y: scroll;
   border: outset;
+  background-color: white;
 }
 .scroll-usuarios:before{
 	content:"";

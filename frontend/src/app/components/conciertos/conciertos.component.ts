@@ -43,7 +43,7 @@ export class ConciertosComponent implements OnInit {
   }
 
   eliminarConcierto(id: string, nombreConcierto: string): void {
-
+    let concierto: Concierto;
     let dialogRef = this.dialog.open(DialogoEliminarComponent, {
       data: '¿Está seguro de eliminar el concierto publico "'+nombreConcierto+'"?'
     });
@@ -52,7 +52,7 @@ export class ConciertosComponent implements OnInit {
       res => {
         if(res){
               //lo elimina de la tabla de conciertos publicos
-          this.conciertosService.eliminarConcierto(id)
+          this.conciertosService.eliminarConcierto(id, concierto)
           .subscribe(
             res => {
               this.listarConciertos();
