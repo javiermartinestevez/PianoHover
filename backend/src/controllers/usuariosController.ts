@@ -2,6 +2,8 @@ import { Request, Response, Router } from 'express';
 import db from '../database';
 import keys from '../keys';
 
+
+
 class UsuariosController {
 
     public router: Router = Router();
@@ -12,22 +14,25 @@ class UsuariosController {
     }
 
     public async loginUsuario(req: Request, res: Response): Promise<any> {
+        const bcryptjs = require('bcryptjs');
         let dateStamp = Math.floor((new Date).getTime() / 1000);
         const { username, password } = req.body;
-        const usuario = await db.query("SELECT * FROM usuarios WHERE usuario = ? AND password = ?", [username, password]);
+        const usuario = await db.query("SELECT * FROM usuarios WHERE usuario = ?", [username]);
         if (usuario.length > 0) {
-            const sign = require('jwt-encode');
-            const secret = keys.secret;
-            const data = {
-                id: usuario[0].id,
-                rol: usuario[0].rol,
-                iat: dateStamp,
-                exp: dateStamp+1800
-            };
-            const jwt = sign(data, secret);
-            res.status(200).json(jwt);
-            return jwt;
-
+            let comparar = bcryptjs.compare(password, usuario[0].password)
+            if(comparar){
+                const sign = require('jwt-encode');
+                const secret = keys.secret;
+                const data = {
+                    id: usuario[0].id,
+                    rol: usuario[0].rol,
+                    iat: dateStamp,
+                    exp: dateStamp+1800
+                };
+                const jwt = sign(data, secret);
+                res.status(200).json(jwt);
+                return jwt;
+            }
         }
         res.status(404).json(usuario[0]);
     }
@@ -42,8 +47,10 @@ class UsuariosController {
     }
 
     public async crearUsuario(req: Request, res: Response): Promise<void> {
+        const bcryptjs = require('bcryptjs');
+        req.body.password = await bcryptjs.hash(req.body.password, 8);
         await db.query('INSERT INTO usuarios set ?', [req.body]);
-        res.json({ text: "Creando usuario" })
+        res.json({ text: "Creando usuario",hash: req.body.password })
     }
 
     public async eliminarUsuario(req: Request, res: Response): Promise<void> {
