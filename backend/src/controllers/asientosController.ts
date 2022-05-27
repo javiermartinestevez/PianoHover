@@ -38,6 +38,20 @@ class AsientosController {
         const asientos = await db.query("SELECT idUsuario, COUNT(*) as cantidad FROM asientos GROUP BY idUsuario ORDER BY idUsuario ASC LIMIT 1");
         res.json(asientos);
     }
+    public async vendidoMes (req: Request, res: Response): Promise<void> {
+        let fechaActual = new Date();
+        let mes = fechaActual.getMonth();
+        let year = fechaActual.getFullYear();
+        const asientos = await db.query("SELECT COUNT(*) as cantidad FROM asientos WHERE MONTH(fecha_crt) = ? AND YEAR(fecha_crt) = ?", [mes+1, year]);
+        res.json(asientos);
+    }
+    public async vendidoMesPasado (req: Request, res: Response): Promise<void> {
+        let fechaActual = new Date();
+        let mes = fechaActual.getMonth();
+        let year = fechaActual.getFullYear();
+        const asientos = await db.query("SELECT COUNT(*) as cantidad FROM asientos WHERE MONTH(fecha_crt) = ? AND YEAR(fecha_crt) = ?", [mes, year]);
+        res.json(asientos);
+    }
 
 
 }

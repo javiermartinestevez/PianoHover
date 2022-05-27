@@ -11,8 +11,11 @@ import { UsersService } from 'src/app/services/users.service';
 export class AdministradorComponent implements OnInit {
 
   concierto: any = {};
+  conciertos: any = [];
   masVendido: any = [];
   cantidad: number = 0;
+  mes: any = {};
+  mesPasado: any = {};
 
   usuario: any = {};
   masCompras: any = [];
@@ -25,8 +28,21 @@ export class AdministradorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listarConciertos();
     this.conciertoMasVendido();
     this.usuarioMasCompras();
+    this.vendidoMes();
+    this.vendidoMesPasado();
+  }
+
+  listarConciertos(): void {
+    this.conciertosService.getConciertos()
+    .subscribe(
+      res => {
+        this.conciertos = res;
+      },
+      err => console.log(err)
+    );
   }
 
   conciertoMasVendido(){
@@ -66,6 +82,26 @@ export class AdministradorComponent implements OnInit {
         this.usuario = res;
       }
     )
+  }
+
+  vendidoMes(){
+    this.asientosService.vendidoMes()
+      .subscribe(
+        res => {
+          this.mes = res;
+          console.log(this.mes[0].cantidad)
+        }
+      )
+  }
+
+  vendidoMesPasado(){
+    this.asientosService.vendidoMesPasado()
+      .subscribe(
+        res => {
+          this.mesPasado = res;
+          console.log(this.mesPasado[0].cantidad);
+        }
+      )
   }
 
 }

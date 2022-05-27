@@ -30,4 +30,10 @@ export class AsientosService {
   crearAsiento(asiento: Asiento) {
     return this.http.post(`${this.API_URL}/asientos`, asiento);
   }
+  vendidoMes() {
+    return this.http.get(`${this.API_URL}/asientos/mes`);
+  }
+  vendidoMesPasado() {
+    return this.http.get(`${this.API_URL}/asientos/mespasado`);
+  }
 }

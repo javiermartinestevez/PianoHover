@@ -1,10 +1,12 @@
 <div class="container mt-5 mb-5 ">
   <div class="row">
     <div class="col-md-4 pb-5" *ngFor="let concierto of conciertos">
-      <div class="card text-center">
+
+      <div class="card text-center" *ngIf="moment(concierto.fecha).isSameOrAfter(fechaActual)">
         <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
           <a routerLink="/concierto/{{ concierto.id }}/"><h4 class="text-white">{{ concierto.titulo }}</h4></a>
         </div>
+        <img *ngIf="moment(concierto.fecha).isSameOrBefore(fechaActual)" routerLink="/concierto/{{ concierto.id }}" [src]="concierto.imagen == '' ? 'assets/img/noimagen.png' : concierto.imagen" class="card-img-top acabado" alt="orquesta">
         <img routerLink="/concierto/{{ concierto.id }}" [src]="concierto.imagen == '' ? 'assets/img/noimagen.png' : concierto.imagen" class="card-img-top" alt="orquesta">
         <div class="card-body">
           <strong><p>El {{ concierto.fecha | date: 'yyyy-MM-dd' }}</p></strong>
@@ -22,6 +24,23 @@
           </button>
         </div>
       </div>
+
+      <div class="card text-center acabado" *ngIf="moment(concierto.fecha).isSameOrBefore(fechaActual)">
+        <div class="card-header bg-dark d-flex justify-content-between aling-items-center">
+          <a class="text-danger">FINALIZADO</a>
+          <a><h4 class="text-white">{{ concierto.titulo }}</h4></a>
+        </div>
+        <img [src]="concierto.imagen == '' ? 'assets/img/noimagen.png' : concierto.imagen" class="card-img" alt="orquesta">
+        <div class="card-body">
+          <strong><p>El {{ concierto.fecha | date: 'yyyy-MM-dd' }}</p></strong>
+          <p class="resumen">{{ concierto.descripcion }}</p>
+
+          <button *ngIf="isAdmin()" class="btn btn-danger btn-block" (click)="eliminarConcierto(concierto.id, concierto.titulo)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -42,6 +42,7 @@ import { UsuarioAdminComponent } from './components/administrador/lista-usuarios
 import { ListaConciertosComponent } from './components/administrador/lista-conciertos/lista-conciertos.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

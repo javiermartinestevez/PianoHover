@@ -3,10 +3,11 @@ import { ConciertosService } from 'src/app/services/conciertos.service';
 import jwt_decode from "jwt-decode";
 
 import * as moment from 'moment';
+moment.locale('es');
+
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoEliminarComponent } from '../dialogo-eliminar/dialogo-eliminar.component';
 import { Concierto } from 'src/models/Concierto';
-moment.locale('es');
 
 @Component({
   selector: 'app-conciertos',

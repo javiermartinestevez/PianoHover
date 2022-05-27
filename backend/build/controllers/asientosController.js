@@ -63,5 +63,23 @@ class AsientosController {
             res.json(asientos);
         });
     }
+    vendidoMes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let fechaActual = new Date();
+            let mes = fechaActual.getMonth();
+            let year = fechaActual.getFullYear();
+            const asientos = yield database_1.default.query("SELECT COUNT(*) as cantidad FROM asientos WHERE MONTH(fecha_crt) = ? AND YEAR(fecha_crt) = ?", [mes + 1, year]);
+            res.json(asientos);
+        });
+    }
+    vendidoMesPasado(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let fechaActual = new Date();
+            let mes = fechaActual.getMonth();
+            let year = fechaActual.getFullYear();
+            const asientos = yield database_1.default.query("SELECT COUNT(*) as cantidad FROM asientos WHERE MONTH(fecha_crt) = ? AND YEAR(fecha_crt) = ?", [mes, year]);
+            res.json(asientos);
+        });
+    }
 }
 exports.asientosController = new AsientosController();
