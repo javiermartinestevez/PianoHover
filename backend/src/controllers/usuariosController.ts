@@ -60,6 +60,8 @@ class UsuariosController {
     }
 
     public async modificarUsuario(req: Request, res: Response): Promise<void> {
+        const bcryptjs = require('bcryptjs');
+        req.body.password = await bcryptjs.hash(req.body.password, 8);
         const { id } = req.params;
         await db.query('UPDATE usuarios SET ? WHERE id = ?', [req.body, id]);
         res.json({ text: "Modificar" + req.params.id })

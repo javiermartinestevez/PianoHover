@@ -78,6 +78,8 @@ class UsuariosController {
     }
     modificarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const bcryptjs = require('bcryptjs');
+            req.body.password = yield bcryptjs.hash(req.body.password, 8);
             const { id } = req.params;
             yield database_1.default.query('UPDATE usuarios SET ? WHERE id = ?', [req.body, id]);
             res.json({ text: "Modificar" + req.params.id });
