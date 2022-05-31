@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ConciertosService {
 
-  API_URL = 'http://localhost:3000/api';
+  API_URL = 'http://pianohover2.ddns.net/api';
 
   constructor(private http: HttpClient) { }
 

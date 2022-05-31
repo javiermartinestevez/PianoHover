@@ -8,7 +8,7 @@ import { Asiento } from 'src/models/Asiento';
 })
 export class AsientosService {
 
-  API_URL = 'http://localhost:3000/api';
+  API_URL = 'http://pianohover2.ddns.net/api';
 
   constructor(private http: HttpClient) { }
 
