@@ -9,7 +9,7 @@ import { Usuario } from 'src/models/Usuario';
 })
 export class UsersService {
 
-  API_URL = 'http://pianohover2.ddns.net/api';
+  API_URL = 'https://pianohover2.ddns.net/api';
 
   constructor(private http: HttpClient) { }
 

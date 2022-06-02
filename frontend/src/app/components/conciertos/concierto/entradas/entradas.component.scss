@@ -207,3 +207,14 @@
   float: right;
   margin: 1vh 0 1vh 0;
 }
+
+@media only screen and (max-width: 500px) {
+  .theatre {
+    margin-top: 3em;
+  }
+  .left, .right {
+    .seat {
+      min-width: 12px;
+    }
+  }
+}
