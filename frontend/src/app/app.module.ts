@@ -40,6 +40,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { DialogoEliminarComponent } from './components/dialogo-eliminar/dialogo-eliminar.component';
 import { UsuarioAdminComponent } from './components/administrador/lista-usuarios/usuario-admin/usuario-admin.component';
 import { ListaConciertosComponent } from './components/administrador/lista-conciertos/lista-conciertos.component';
+import { DialogoRegistroComponent } from './components/dialogo-registro/dialogo-registro.component';
 
 
 
@@ -70,7 +71,8 @@ import { ListaConciertosComponent } from './components/administrador/lista-conci
     SidebarAdminComponent,
     DialogoEliminarComponent,
     UsuarioAdminComponent,
-    ListaConciertosComponent
+    ListaConciertosComponent,
+    DialogoRegistroComponent
 
   ],
   imports: [
